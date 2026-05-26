@@ -1,11 +1,11 @@
 
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Luxury Nails Studio</title>
+  <meta name="description" content="Salon d’onglerie à Paris - pose gel, nail art et manucure luxe. Prenez rendez-vous chez Luxury Nails Studio.">
+  <title>Rose & Paillettes by Amandine</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -17,58 +17,12 @@
       font-family:'Poppins', sans-serif;
     }
 
+    html{ scroll-behavior:smooth; }
+
     body{
       background:#fff7fb;
       color:#333;
       overflow-x:hidden;
-    }
-
-    header{
-      height:100vh;
-      background:
-        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url('https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1600&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:20px;
-    }
-
-    .hero{
-      color:white;
-      animation:fadeIn 1.5s ease;
-    }
-
-    .hero h1{
-      font-size:4rem;
-      margin-bottom:20px;
-      letter-spacing:2px;
-    }
-
-    .hero p{
-      font-size:1.2rem;
-      max-width:700px;
-      margin:auto;
-      margin-bottom:30px;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:14px 35px;
-      background:#ff4fa0;
-      color:white;
-      text-decoration:none;
-      border-radius:40px;
-      transition:0.3s;
-      font-weight:600;
-    }
-
-    .btn:hover{
-      background:#ff2f8b;
-      transform:translateY(-3px);
     }
 
     nav{
@@ -83,12 +37,10 @@
       backdrop-filter:blur(10px);
       z-index:1000;
       box-shadow:0 2px 10px rgba(0,0,0,0.05);
+      transition:0.3s;
     }
 
-    nav h2{
-      color:#ff4fa0;
-      font-size:1.8rem;
-    }
+    nav h2{ color:#ff4fa0; }
 
     nav ul{
       display:flex;
@@ -96,168 +48,100 @@
       gap:30px;
     }
 
-    nav a{
+    nav a{ text-decoration:none; color:#333; }
+    nav a:hover{ color:#ff4fa0; }
+
+    header{
+      height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url('https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1600&auto=format&fit=crop');
+      display:flex;align-items:center;justify-content:center;text-align:center;
+      color:white;
+    }
+
+    .hero h1{ font-size:4rem; }
+    .hero p{ margin:20px auto; max-width:600px; }
+
+    .btn{
+      padding:14px 35px;
+      background:#ff4fa0;
+      color:white;
+      border-radius:40px;
       text-decoration:none;
-      color:#333;
-      font-weight:500;
       transition:0.3s;
     }
+    .btn:hover{ background:#ff2f8b; transform:translateY(-3px); }
 
-    nav a:hover{
-      color:#ff4fa0;
+    section{ padding:100px 10%; }
+
+    .fade-up{
+      opacity:0;
+      transform:translateY(40px);
+      transition:0.8s;
     }
 
-    section{
-      padding:100px 10%;
+    .fade-up.visible{
+      opacity:1;
+      transform:translateY(0);
     }
 
-    .section-title{
-      text-align:center;
-      margin-bottom:60px;
-    }
-
-    .section-title h2{
-      font-size:2.5rem;
-      color:#ff4fa0;
-      margin-bottom:10px;
-    }
-
-    .section-title p{
-      color:#777;
-    }
-
-    .services{
+    .services,.gallery{
       display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
       gap:30px;
     }
 
     .card{
       background:white;
-      border-radius:25px;
+      border-radius:20px;
       overflow:hidden;
       box-shadow:0 10px 30px rgba(0,0,0,0.08);
       transition:0.4s;
     }
 
-    .card:hover{
-      transform:translateY(-10px);
-    }
+    .card:hover{ transform:translateY(-10px); }
 
-    .card img{
-      width:100%;
-      height:250px;
-      object-fit:cover;
-    }
+    .card img{ width:100%; height:250px; object-fit:cover; }
 
-    .card-content{
-      padding:25px;
-    }
-
-    .card-content h3{
-      margin-bottom:10px;
-      color:#ff4fa0;
-    }
-
-    .price{
-      margin-top:15px;
-      font-size:1.2rem;
-      font-weight:700;
-    }
-
-    .about{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:50px;
-      align-items:center;
-    }
-
-    .about img{
-      width:100%;
-      border-radius:30px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .about-text h2{
-      color:#ff4fa0;
-      font-size:2.5rem;
-      margin-bottom:20px;
-    }
-
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
-      gap:20px;
-    }
+    .price{ font-weight:bold; margin-top:10px; }
 
     .gallery img{
-      width:100%;
-      height:300px;
-      object-fit:cover;
+      width:100%; height:300px; object-fit:cover;
       border-radius:20px;
       transition:0.4s;
     }
 
     .gallery img:hover{
-      transform:scale(1.03);
+      transform:scale(1.05);
+      filter:brightness(1.1);
     }
 
     .contact{
-      text-align:center;
       background:linear-gradient(135deg,#ff4fa0,#ff85c2);
       color:white;
-      border-radius:40px;
-      padding:70px 20px;
-    }
-
-    .contact h2{
-      font-size:2.5rem;
-      margin-bottom:20px;
-    }
-
-    .contact p{
-      margin-bottom:10px;
-      font-size:1.1rem;
+      text-align:center;
+      border-radius:30px;
+      padding:60px 20px;
     }
 
     footer{
       text-align:center;
-      padding:30px;
+      padding:20px;
       color:#777;
     }
 
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:translateY(30px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    @media(max-width:900px){
-
-      .hero h1{
-        font-size:2.8rem;
-      }
-
-      .about{
-        grid-template-columns:1fr;
-      }
-
-      nav{
-        flex-direction:column;
-        gap:15px;
-      }
-
-      nav ul{
-        gap:15px;
-        flex-wrap:wrap;
-        justify-content:center;
-      }
-
+    .floating-btn{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background:#ff4fa0;
+      color:white;
+      font-size:24px;
+      padding:15px;
+      border-radius:50%;
+      text-decoration:none;
+      box-shadow:0 5px 20px rgba(0,0,0,0.2);
     }
 
   </style>
@@ -265,162 +149,88 @@
 
 <body>
 
-  <nav>
-    <h2>Luxury Nails</h2>
+<nav>
+  <h2>Luxury Nails</h2>
+  <ul>
+    <li><a href="#services">Prestations</a></li>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <ul>
-      <li><a href="#services">Prestations</a></li>
-      <li><a href="#about">À propos</a></li>
-      <li><a href="#gallery">Galerie</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<header>
+  <div class="hero">
+    <h1>Luxury Nails Studio</h1>
+    <p>Sublimez vos mains avec élégance et modernité.</p>
+    <a href="#contact" class="btn">Prendre rendez-vous</a>
+  </div>
+</header>
 
-  <header>
-    <div class="hero">
-      <h1>Luxury Nails Studio</h1>
-
-      <p>
-        Sublimez vos mains avec des prestations d’onglerie élégantes,
-        modernes et réalisées avec passion.
-      </p>
-
-      <a href="#contact" class="btn">Prendre rendez-vous</a>
-    </div>
-  </header>
-
-  <section id="services">
-
-    <div class="section-title">
-      <h2>Nos Prestations</h2>
-      <p>Beauté, élégance et perfection jusque dans les détails.</p>
+<section id="services" class="fade-up">
+  <h2>Nos prestations</h2>
+  <div class="services">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc">
+      <div class="price">Pose Gel - 45€</div>
     </div>
 
-    <div class="services">
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?q=80&w=1200&auto=format&fit=crop">
-
-        <div class="card-content">
-          <h3>Pose Gel</h3>
-
-          <p>
-            Des ongles résistants et brillants avec une finition parfaite.
-          </p>
-
-          <div class="price">À partir de 45€</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200&auto=format&fit=crop">
-
-        <div class="card-content">
-          <h3>Nail Art</h3>
-
-          <p>
-            Créations uniques et tendances adaptées à votre style.
-          </p>
-
-          <div class="price">À partir de 20€</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1607008829749-c0f284a4972b?q=80&w=1200&auto=format&fit=crop">
-
-        <div class="card-content">
-          <h3>Manucure Luxe</h3>
-
-          <p>
-            Soin complet pour des mains douces et élégantes.
-          </p>
-
-          <div class="price">À partir de 35€</div>
-        </div>
-      </div>
-
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702">
+      <div class="price">Nail Art - 20€</div>
     </div>
+  </div>
+</section>
 
-  </section>
+<section id="about" class="fade-up">
+  <h2>À propos</h2>
+  <p>Salon spécialisé dans l’élégance et la beauté des mains.</p>
+</section>
 
-  <section id="about">
+<section id="gallery" class="fade-up">
+  <h2>Galerie</h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53">
+    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371">
+  </div>
+</section>
 
-    <div class="about">
+<section id="contact">
+  <div class="contact">
+    <h2>Contact</h2>
+    <p>📍 Saint céré</p>
+    <p>📞 06 88 10 37 83</p>
+    https://calendly.com
+  </div>
+</section>
 
-      <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200&auto=format&fit=crop">
+<footer>
+  <p>© 2026 Rose & Paillettes by Amandine</p>
+</footer>
 
-      <div class="about-text">
+<a href="tel:0688103783" class="floating-btn">📞</a>
 
-        <h2>À propos du salon</h2>
+<script>
+const nav = document.querySelector("nav");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    nav.style.padding = "10px 50px";
+  } else {
+    nav.style.padding = "20px 50px";
+  }
+});
 
-        <p>
-          Bienvenue chez Luxury Nails Studio, votre espace beauté dédié
-          à l’élégance et au bien-être.
-        </p>
-
-        <br>
-
-        <p>
-          Nous utilisons des produits professionnels de haute qualité afin
-          d’offrir des prestations durables, modernes et raffinées.
-        </p>
-
-        <br>
-
-        <a href="#contact" class="btn">Nous contacter</a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <section id="gallery">
-
-    <div class="section-title">
-      <h2>Galerie</h2>
-      <p>Quelques réalisations de notre studio.</p>
-    </div>
-
-    <div class="gallery">
-
-      <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=1200&auto=format&fit=crop">
-
-      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1200&auto=format&fit=crop">
-
-      <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=1200&auto=format&fit=crop">
-
-      <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=1200&auto=format&fit=crop">
-
-    </div>
-
-  </section>
-
-  <section id="contact">
-
-    <div class="contact">
-
-      <h2>Contact & Rendez-vous</h2>
-
-      <p>📍 Paris, France</p>
-
-      <p>📞 06 00 00 00 00</p>
-
-      <p>📧 contact@luxurynails.fr</p>
-
-      <br>
-
-      <a href="#" class="btn">Réserver maintenant</a>
-
-    </div>
-
-  </section>
-
-  <footer>
-    © 2026 Luxury Nails Studio — Tous droits réservés
-  </footer>
+const elements = document.querySelectorAll(".fade-up");
+const reveal = () => {
+  elements.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+      el.classList.add("visible");
+    }
+  });
+};
+window.addEventListener("scroll", reveal);
+reveal();
+</script>
 
 </body>
 </html>
-```
