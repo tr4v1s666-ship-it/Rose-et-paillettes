@@ -28,45 +28,45 @@ nav a{text-decoration:none;color:#2d2d2d;font-size:0.9rem;letter-spacing:1px;}
 header{
 height:100vh;
 display:flex;align-items:center;justify-content:center;text-align:center;
-background:
-linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
 url("https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1600");
 background-size:cover;
+background-position:center;
 color:white;
+}
+
+.hero{
+max-width:700px;
+margin:auto;
 }
 
 .hero h1{
 font-family:'Playfair Display',serif;
 font-size:4rem;
 font-weight:700;
-margin-bottom:20px;
+letter-spacing:2px;
+margin-bottom:15px;
 }
 
 .hero p{
-max-width:600px;
-margin:auto;
-margin-bottom:30px;
-font-weight:300;
+font-size:0.95rem;
+letter-spacing:2px;
+opacity:0.8;
 }
 
-.btn{
-padding:14px 40px;
-border-radius:50px;
-background:linear-gradient(135deg,#d87cab,#f4b6cc);
-color:white;text-decoration:none;
-letter-spacing:1px;
-transition:0.3s;
+/* séparation luxe */
+.hero::after{
+content:"";
+display:block;
+width:60px;
+height:1px;
+background:rgba(255,255,255,0.6);
+margin:25px auto 0;
 }
-
-.btn:hover{transform:translateY(-3px);}
 
 section{padding:120px 10%;}
 
-.title{
-text-align:center;
-margin-bottom:60px;
-}
-
+.title{text-align:center;margin-bottom:60px;}
 .title h2{
 font-family:'Playfair Display',serif;
 font-size:2.5rem;
@@ -145,8 +145,7 @@ nav{padding:15px 20px;flex-direction:column;gap:10px;}
 <header>
 <div class="hero">
 <h1>Rose & Paillettes</h1>
-<p>by Amandine — Saint-Céré, Lot</p>
-<a href="#contact" class="btn">Prendre rendez-vous</a>
+<p>BY AMANDINE — SAINT-CÉRÉ, LOT</p>
 </div>
 </header>
 
