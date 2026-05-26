@@ -1,30 +1,25 @@
+# Refonte Premium — Rose & Paillettes
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>Rose & Paillettes by Amandine — Institut Onglerie Luxe à Saint-Céré</title>
-
-<meta name="description" content="Institut d’onglerie haut de gamme à Saint-Céré. Pose gel, nail art, manucure premium et créations élégantes dans un univers chic et féminin.">
-
-<meta name="keywords" content="onglerie Saint-Céré, nail art luxe, pose gel, manucure premium, institut onglerie Lot">
-
-<meta name="theme-color" content="#e8a8bd">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rose & Paillettes — Institut Luxury Nails</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
---bg:#faf6f8;
+--gold:#d8a96d;
+--pink:#f6b7d2;
+--dark:#0d0d12;
+--dark2:#14141b;
 --white:#ffffff;
---gold:#d8b07b;
---rose:#f0c0d0;
---text:#2f2a2d;
---glass:rgba(255,255,255,0.18);
---shadow:0 20px 60px rgba(0,0,0,0.08);
+--glass:rgba(255,255,255,0.08);
 }
 
 *{
@@ -36,108 +31,89 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Montserrat',sans-serif;
-background:var(--bg);
-color:var(--text);
-overflow-x:hidden;
-transition:0.4s;
-}
-
-/* MODE SOMBRE */
-
-body.dark{
-background:#111;
-color:#f1f1f1;
-}
-
-body.dark nav{
-background:rgba(10,10,10,0.75);
-}
-
-body.dark .card,
-body.dark .gallery-item,
-body.dark .contact-box{
-background:#1c1c1c;
+background:linear-gradient(180deg,#09090c,#111117,#181821);
 color:white;
+overflow-x:hidden;
+position:relative;
 }
 
-/* VIDEO FOND */
+/* BACKGROUND LUXE */
 
-.video-bg{
+body::before{
+content:"";
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-overflow:hidden;
-z-index:-3;
+inset:0;
+background:
+radial-gradient(circle at top right, rgba(216,169,109,0.25), transparent 30%),
+radial-gradient(circle at bottom left, rgba(246,183,210,0.18), transparent 30%),
+url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1800');
+background-size:cover;
+background-position:center;
+filter:brightness(0.28) saturate(1.2);
+z-index:-4;
+transform:scale(1.1);
+animation:bgMove 20s ease-in-out infinite alternate;
 }
 
-.video-bg video{
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0.12;
-filter:blur(1px);
+@keyframes bgMove{
+0%{transform:scale(1.1) translateY(0px);}
+100%{transform:scale(1.18) translateY(-20px);}
 }
 
 /* PARTICULES */
 
-.particles{
+.sparkles{
 position:fixed;
-width:100%;
-height:100%;
-overflow:hidden;
-z-index:-2;
+inset:0;
 pointer-events:none;
+z-index:-2;
 }
 
-.particles span{
+.sparkles span{
 position:absolute;
-display:block;
-width:6px;
-height:6px;
-background:rgba(255,255,255,0.8);
+width:4px;
+height:4px;
+background:white;
 border-radius:50%;
-animation:float 12s linear infinite;
+opacity:0;
+box-shadow:0 0 15px white;
+animation:sparkle 8s linear infinite;
 }
 
-@keyframes float{
+@keyframes sparkle{
 0%{
 transform:translateY(100vh) scale(0);
 opacity:0;
 }
-50%{
+15%{
 opacity:1;
 }
 100%{
-transform:translateY(-10vh) scale(1);
+transform:translateY(-10vh) scale(1.4);
 opacity:0;
 }
 }
 
-/* NAV */
-
 nav{
 position:fixed;
-top:0;
-left:0;
 width:100%;
-padding:22px 6%;
+padding:25px 7%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(255,255,255,0.55);
-backdrop-filter:blur(16px);
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(18px);
 z-index:999;
-border-bottom:1px solid rgba(255,255,255,0.2);
+border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo{
-font-family:'Cormorant Garamond',serif;
-font-size:2rem;
-font-weight:700;
-letter-spacing:2px;
-color:var(--gold);
+font-family:'Cinzel',serif;
+font-size:1.8rem;
+letter-spacing:4px;
+background:linear-gradient(90deg,var(--gold),#fff,var(--pink));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 nav ul{
@@ -148,8 +124,8 @@ list-style:none;
 
 nav a{
 text-decoration:none;
-color:inherit;
-font-size:0.82rem;
+color:white;
+font-size:0.8rem;
 letter-spacing:2px;
 position:relative;
 }
@@ -157,11 +133,11 @@ position:relative;
 nav a::after{
 content:"";
 position:absolute;
-bottom:-6px;
 left:0;
+bottom:-7px;
 width:0%;
 height:1px;
-background:var(--gold);
+background:linear-gradient(90deg,var(--gold),var(--pink));
 transition:0.4s;
 }
 
@@ -174,228 +150,221 @@ width:100%;
 header{
 height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
 padding:0 20px;
 position:relative;
 }
 
 .hero{
-max-width:900px;
-animation:heroAppear 1.5s ease;
+max-width:1000px;
+animation:fadeUp 1.4s ease;
+}
+
+.hero .badge{
+padding:12px 26px;
+border-radius:40px;
+display:inline-block;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
+backdrop-filter:blur(15px);
+font-size:0.8rem;
+letter-spacing:2px;
+margin-bottom:30px;
 }
 
 .hero h1{
-font-family:'Cormorant Garamond',serif;
-font-size:6rem;
-font-weight:700;
+font-family:'Cinzel',serif;
+font-size:6.5rem;
 line-height:1;
-color:white;
-text-shadow:0 10px 30px rgba(0,0,0,0.3);
+margin-bottom:25px;
+text-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.hero h1 span{
+background:linear-gradient(90deg,var(--gold),#fff,var(--pink));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .hero p{
-margin-top:25px;
-letter-spacing:5px;
-font-size:0.9rem;
-color:white;
+max-width:750px;
+margin:auto;
+line-height:1.9;
+font-size:1rem;
 opacity:0.85;
 }
 
 .hero-buttons{
 margin-top:45px;
 display:flex;
-justify-content:center;
 gap:20px;
+justify-content:center;
 flex-wrap:wrap;
 }
 
 .btn{
 padding:18px 42px;
 border-radius:60px;
-background:linear-gradient(135deg,#f0c0d0,#d8b07b);
 text-decoration:none;
-color:white;
+font-size:0.9rem;
+letter-spacing:2px;
 font-weight:600;
-letter-spacing:1px;
 transition:0.4s;
-box-shadow:0 10px 40px rgba(0,0,0,0.15);
+position:relative;
+overflow:hidden;
+}
+
+.btn-primary{
+background:linear-gradient(135deg,var(--gold),var(--pink));
+color:white;
+box-shadow:0 15px 40px rgba(216,169,109,0.3);
+}
+
+.btn-secondary{
+background:rgba(255,255,255,0.08);
+color:white;
+border:1px solid rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
 }
 
 .btn:hover{
-transform:translateY(-5px) scale(1.03);
-}
-
-.btn-outline{
-background:transparent;
-border:1px solid rgba(255,255,255,0.4);
+transform:translateY(-5px) scale(1.04);
 }
 
 /* SECTION */
 
 section{
-padding:130px 10%;
+padding:140px 10%;
 position:relative;
-z-index:2;
 }
 
 .title{
 text-align:center;
-margin-bottom:80px;
+margin-bottom:90px;
 }
 
 .title h2{
-font-family:'Cormorant Garamond',serif;
+font-family:'Cinzel',serif;
 font-size:4rem;
-font-weight:700;
+margin-bottom:15px;
 }
 
 .title p{
-margin-top:10px;
+letter-spacing:4px;
 opacity:0.7;
-letter-spacing:2px;
+font-size:0.8rem;
 }
 
 /* SERVICES */
 
 .services{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:35px;
 }
 
 .card{
-background:rgba(255,255,255,0.55);
-backdrop-filter:blur(18px);
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(16px);
 padding:45px;
 border-radius:35px;
-box-shadow:var(--shadow);
-transition:0.5s;
-transform-style:preserve-3d;
+transition:0.6s;
 position:relative;
 overflow:hidden;
+transform-style:preserve-3d;
 }
 
 .card::before{
 content:"";
 position:absolute;
-top:-100px;
-right:-100px;
-width:220px;
-height:220px;
-background:radial-gradient(circle,rgba(255,255,255,0.5),transparent);
+width:250px;
+height:250px;
+background:radial-gradient(circle,rgba(255,255,255,0.15),transparent);
+top:-120px;
+right:-120px;
 }
 
 .card:hover{
-transform:rotateY(8deg) rotateX(8deg) translateY(-10px);
+transform:translateY(-15px) rotateX(8deg) rotateY(-8deg);
+box-shadow:0 25px 60px rgba(0,0,0,0.35);
 }
 
 .card h3{
-font-family:'Cormorant Garamond',serif;
+font-family:'Cinzel',serif;
 font-size:2rem;
-margin-bottom:15px;
+margin-bottom:18px;
+}
+
+.card p{
+line-height:1.8;
+opacity:0.85;
 }
 
 .price{
-margin-top:18px;
+margin-top:25px;
 font-weight:600;
 color:var(--gold);
+font-size:1.1rem;
 }
 
-/* ABOUT */
-
-.about{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-align-items:center;
-}
-
-.about img{
-width:100%;
-border-radius:35px;
-box-shadow:var(--shadow);
-}
-
-.about-text h2{
-font-family:'Cormorant Garamond',serif;
-font-size:4rem;
-margin-bottom:25px;
-}
-
-.about-text p{
-line-height:1.9;
-opacity:0.8;
-}
-
-/* PINTEREST GALLERY */
+/* GALLERY */
 
 .gallery{
-columns:3 250px;
-column-gap:18px;
+columns:3 260px;
+column-gap:20px;
 }
 
 .gallery-item{
-margin-bottom:18px;
-overflow:hidden;
-border-radius:25px;
+margin-bottom:20px;
 position:relative;
-background:white;
-box-shadow:var(--shadow);
+overflow:hidden;
+border-radius:28px;
 }
 
 .gallery img{
 width:100%;
 display:block;
-transition:0.5s;
+transition:0.7s;
+filter:brightness(0.9);
+}
+
+.gallery-item::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,0.55),transparent);
 }
 
 .gallery-item:hover img{
-transform:scale(1.05);
+transform:scale(1.08);
+filter:brightness(1.05);
 }
 
 /* CONTACT */
 
-.contact-box{
-background:rgba(255,255,255,0.6);
+.contact{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
 backdrop-filter:blur(18px);
 padding:70px;
 border-radius:40px;
 text-align:center;
-box-shadow:var(--shadow);
 }
 
-.contact-box h2{
-font-family:'Cormorant Garamond',serif;
+.contact h2{
+font-family:'Cinzel',serif;
 font-size:4rem;
-margin-bottom:25px;
+margin-bottom:20px;
 }
-
-.socials{
-display:flex;
-justify-content:center;
-gap:20px;
-margin-top:30px;
-flex-wrap:wrap;
-}
-
-.socials a{
-padding:14px 28px;
-border-radius:40px;
-text-decoration:none;
-background:linear-gradient(135deg,#f0c0d0,#d8b07b);
-color:white;
-font-size:0.85rem;
-}
-
-/* RDV */
 
 .booking{
 margin-top:40px;
 display:grid;
-gap:20px;
-max-width:500px;
+gap:18px;
+max-width:600px;
 margin-inline:auto;
 }
 
@@ -404,34 +373,21 @@ margin-inline:auto;
 padding:18px;
 border:none;
 border-radius:20px;
-background:rgba(255,255,255,0.7);
-font-family:inherit;
-}
-
-.booking button{
-border:none;
-cursor:pointer;
-}
-
-/* TOGGLE */
-
-.toggle-dark{
-position:fixed;
-bottom:30px;
-right:30px;
-width:60px;
-height:60px;
-border:none;
-border-radius:50%;
-background:linear-gradient(135deg,#f0c0d0,#d8b07b);
+background:rgba(255,255,255,0.08);
 color:white;
-font-size:1.2rem;
-cursor:pointer;
-z-index:999;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
+font-family:inherit;
+backdrop-filter:blur(12px);
 }
 
-/* FOOTER */
+.booking textarea{
+min-height:160px;
+resize:none;
+}
+
+.booking input::placeholder,
+.booking textarea::placeholder{
+color:rgba(255,255,255,0.6);
+}
 
 footer{
 padding:40px;
@@ -440,7 +396,7 @@ font-size:0.8rem;
 opacity:0.6;
 }
 
-/* ANIMATION */
+/* SCROLL ANIM */
 
 .reveal{
 opacity:0;
@@ -453,11 +409,12 @@ opacity:1;
 transform:translateY(0);
 }
 
-@keyframes heroAppear{
+@keyframes fadeUp{
 from{
 opacity:0;
 transform:translateY(40px);
 }
+
 to{
 opacity:1;
 transform:translateY(0);
@@ -468,38 +425,33 @@ transform:translateY(0);
 
 @media(max-width:950px){
 
+nav{
+flex-direction:column;
+gap:20px;
+padding:20px;
+}
+
+nav ul{
+flex-wrap:wrap;
+justify-content:center;
+gap:18px;
+}
+
 .hero h1{
 font-size:4rem;
 }
 
-.about{
-grid-template-columns:1fr;
-}
-
-nav{
-padding:20px;
-flex-direction:column;
-gap:20px;
-}
-
-nav ul{
-gap:18px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
 .title h2,
-.about-text h2,
-.contact-box h2{
-font-size:3rem;
-}
-
-.contact-box{
-padding:40px 25px;
+.contact h2{
+font-size:2.8rem;
 }
 
 section{
 padding:110px 7%;
+}
+
+.contact{
+padding:40px 25px;
 }
 
 }
@@ -509,83 +461,81 @@ padding:110px 7%;
 
 <body>
 
-<!-- VIDEO BACKGROUND -->
-
-<div class="video-bg">
-<video autoplay muted loop playsinline>
-<source src="https://cdn.coverr.co/videos/coverr-woman-doing-manicure-1561982184790?download=1080p" type="video/mp4">
-</video>
+<div class="sparkles">
+<span style="left:5%;animation-delay:0s"></span>
+<span style="left:15%;animation-delay:1s"></span>
+<span style="left:28%;animation-delay:3s"></span>
+<span style="left:42%;animation-delay:2s"></span>
+<span style="left:58%;animation-delay:5s"></span>
+<span style="left:72%;animation-delay:4s"></span>
+<span style="left:85%;animation-delay:1s"></span>
+<span style="left:95%;animation-delay:6s"></span>
 </div>
-
-<!-- PARTICULES -->
-
-<div class="particles">
-<span style="left:10%;animation-delay:0s;"></span>
-<span style="left:20%;animation-delay:2s;"></span>
-<span style="left:35%;animation-delay:4s;"></span>
-<span style="left:50%;animation-delay:1s;"></span>
-<span style="left:70%;animation-delay:5s;"></span>
-<span style="left:85%;animation-delay:3s;"></span>
-</div>
-
-<!-- NAV -->
 
 <nav>
-<div class="logo">Rose & Paillettes</div>
+<div class="logo">ROSE & PAILLETTES</div>
 
 <ul>
 <li><a href="#services">Prestations</a></li>
-<li><a href="#about">Le salon</a></li>
 <li><a href="#gallery">Galerie</a></li>
-<li><a href="#contact">Contact</a></li>
+<li><a href="#contact">Réserver</a></li>
 </ul>
 </nav>
-
-<!-- HERO -->
 
 <header>
 
 <div class="hero">
 
-<h1>Rose & Paillettes</h1>
+<div class="badge">INSTITUT LUXE • SAINT-CÉRÉ</div>
 
-<p>INSTITUT PARISIEN • ONGLES • BEAUTÉ • ÉLÉGANCE</p>
+<h1>
+<span>Rose</span> & <span>Paillettes</span>
+</h1>
+
+<p>
+Une expérience beauté raffinée inspirée des instituts parisiens haut de gamme.
+Design élégant, atmosphère intime et prestations premium.
+</p>
 
 <div class="hero-buttons">
-<a href="#contact" class="btn">Prendre rendez-vous</a>
-<a href="#gallery" class="btn btn-outline">Voir la galerie</a>
+<a href="#contact" class="btn btn-primary">Prendre rendez-vous</a>
+<a href="#gallery" class="btn btn-secondary">Voir les créations</a>
 </div>
 
 </div>
 
 </header>
 
-<!-- SERVICES -->
-
 <section id="services" class="reveal">
 
 <div class="title">
 <h2>Prestations</h2>
-<p>L’EXCELLENCE DU DÉTAIL</p>
+<p>ÉLÉGANCE • LUXE • FÉMINITÉ</p>
 </div>
 
 <div class="services">
 
 <div class="card">
 <h3>Pose Gel Signature</h3>
-<p>Architecture parfaite et finition ultra brillante inspirée des instituts de luxe parisiens.</p>
+<p>
+Une architecture parfaite avec finition brillante et tenue longue durée.
+</p>
 <div class="price">À partir de 55€</div>
 </div>
 
 <div class="card">
 <h3>Nail Art Couture</h3>
-<p>Créations élégantes, minimalistes ou sophistiquées réalisées sur-mesure.</p>
+<p>
+Créations artistiques personnalisées inspirées des tendances luxe et minimalistes.
+</p>
 <div class="price">À partir de 15€</div>
 </div>
 
 <div class="card">
 <h3>Manucure Premium</h3>
-<p>Soin complet des mains avec hydratation intense et finition raffinée.</p>
+<p>
+Soin complet des mains avec finition élégante et hydratation intense.
+</p>
 <div class="price">À partir de 40€</div>
 </div>
 
@@ -593,69 +543,42 @@ padding:110px 7%;
 
 </section>
 
-<!-- ABOUT -->
-
-<section id="about" class="reveal">
-
-<div class="about">
-
-<img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200">
-
-<div class="about-text">
-
-<h2>Le Salon</h2>
-
-<p>
-Un univers raffiné mêlant féminité, élégance et modernité.
-Chaque rendez-vous est pensé comme une expérience haut de gamme où le détail devient un art.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- GALLERY -->
-
 <section id="gallery" class="reveal">
 
 <div class="title">
 <h2>Galerie</h2>
-<p>INSPIRATIONS & CRÉATIONS</p>
+<p>CRÉATIONS SIGNATURE</p>
 </div>
 
 <div class="gallery">
 
 <div class="gallery-item">
-<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1200">
+<img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?q=80&w=1200">
 </div>
 
 <div class="gallery-item">
-<img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=1200">
+<img src="https://images.unsplash.com/photo-1610992237591-6f1c0f9d7d6d?q=80&w=1200">
 </div>
 
 <div class="gallery-item">
-<img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=1200">
+<img src="https://images.unsplash.com/photo-1619451334792-150fd785ee74?q=80&w=1200">
 </div>
 
 <div class="gallery-item">
-<img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1200">
+<img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=1200">
 </div>
 
 <div class="gallery-item">
-<img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1200">
+<img src="https://images.unsplash.com/photo-1631217868264-e6b90bb7e133?q=80&w=1200">
 </div>
 
 </div>
 
 </section>
 
-<!-- CONTACT -->
-
 <section id="contact" class="reveal">
 
-<div class="contact-box">
+<div class="contact">
 
 <h2>Réserver</h2>
 
@@ -663,23 +586,11 @@ Chaque rendez-vous est pensé comme une expérience haut de gamme où le détail
 <p>06 00 00 00 00</p>
 <p>contact@rosepaillettes.fr</p>
 
-<div class="socials">
-
-<a href="#">Instagram</a>
-<a href="#">TikTok</a>
-
-</div>
-
 <form class="booking">
-
 <input type="text" placeholder="Votre nom">
-
 <input type="email" placeholder="Votre email">
-
-<textarea rows="5" placeholder="Votre demande"></textarea>
-
-<button class="btn">Envoyer la demande</button>
-
+<textarea placeholder="Votre demande"></textarea>
+<button class="btn btn-primary">Envoyer</button>
 </form>
 
 </div>
@@ -687,24 +598,12 @@ Chaque rendez-vous est pensé comme une expérience haut de gamme où le détail
 </section>
 
 <footer>
-© 2026 Rose & Paillettes by Amandine — Tous droits réservés
+© 2026 Rose & Paillettes by Amandine
 </footer>
-
-<!-- DARK MODE -->
-
-<button class="toggle-dark">☾</button>
 
 <script>
 
-/* MODE SOMBRE */
-
-const toggle = document.querySelector('.toggle-dark');
-
-toggle.addEventListener('click', () => {
-document.body.classList.toggle('dark');
-});
-
-/* REVEAL SCROLL */
+/* SCROLL ANIMATION */
 
 const reveals = document.querySelectorAll('.reveal');
 
@@ -713,9 +612,8 @@ window.addEventListener('scroll', () => {
 reveals.forEach(reveal => {
 
 const top = reveal.getBoundingClientRect().top;
-const visible = 150;
 
-if(top < window.innerHeight - visible){
+if(top < window.innerHeight - 100){
 reveal.classList.add('active');
 }
 
@@ -723,9 +621,11 @@ reveal.classList.add('active');
 
 });
 
-/* 3D CARDS */
+/* 3D CARD EFFECT */
 
-document.querySelectorAll('.card').forEach(card => {
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
 
 card.addEventListener('mousemove', e => {
 
@@ -734,20 +634,19 @@ const rect = card.getBoundingClientRect();
 const x = e.clientX - rect.left;
 const y = e.clientY - rect.top;
 
-const rotateY = ((x / rect.width) - 0.5) * 18;
-const rotateX = ((y / rect.height) - 0.5) * -18;
+const rotateY = ((x / rect.width) - 0.5) * 20;
+const rotateX = ((y / rect.height) - 0.5) * -20;
 
-card.style.transform =
-`perspective(1000px)
+card.style.transform = `
 rotateY(${rotateY}deg)
 rotateX(${rotateX}deg)
-translateY(-10px)`;
+translateY(-10px)
+`;
 
 });
 
 card.addEventListener('mouseleave', () => {
-card.style.transform =
-'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+card.style.transform = 'rotateY(0deg) rotateX(0deg)';
 });
 
 });
@@ -756,3 +655,4 @@ card.style.transform =
 
 </body>
 </html>
+```
