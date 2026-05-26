@@ -6,29 +6,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rose & Paillettes by Amandine</title>
 
-https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap
+https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;background:#faf7f9;color:#2d2d2d;}
-
-nav{
-position:fixed;top:0;width:100%;
-display:flex;justify-content:space-between;align-items:center;
-padding:20px 60px;
-background:rgba(255,255,255,0.85);
-backdrop-filter:blur(12px);
-z-index:1000;
+body{
+font-family:'Poppins',sans-serif;
+background:#faf7f9;
+color:#2d2d2d;
+overflow-x:hidden;
 }
 
-nav h2{font-family:'Playfair Display',serif;font-size:1.6rem;letter-spacing:1px;}
-nav ul{display:flex;gap:30px;list-style:none;}
-nav a{text-decoration:none;color:#2d2d2d;font-size:0.9rem;letter-spacing:1px;}
+/* LOGO BACKGROUND LUXE */
+body::before{
+content:"";
+position:fixed;
+top:50%;left:50%;
+transform:translate(-50%,-50%);
+width:650px;height:650px;
+background:url('633927036_897947146543601_142961298766332761_n.jpg') center/contain no-repeat;
+opacity:0.05;
+z-index:0;
+pointer-events:none;
+}
+
+nav{
+position:fixed;
+width:100%;
+padding:25px 80px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(14px);
+z-index:1000;
+border-bottom:1px solid rgba(0,0,0,0.04);
+}
+
+nav h2{
+font-family:'Playfair Display',serif;
+letter-spacing:2px;
+color:#e8a8bd;
+}
+
+nav ul{display:flex;gap:40px;list-style:none;}
+nav a{
+text-decoration:none;
+color:#555;
+font-size:0.85rem;
+letter-spacing:2px;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+bottom:-5px;left:0;
+width:0%;height:1px;
+background:#e8a8bd;
+transition:0.4s;
+}
+nav a:hover::after{width:100%;}
 
 header{
 height:100vh;
-display:flex;align-items:center;justify-content:center;text-align:center;
-background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
 url("https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1600");
 background-size:cover;
 background-position:center;
@@ -36,97 +82,140 @@ color:white;
 }
 
 .hero{
-max-width:700px;
-margin:auto;
+animation:fadeIn 1.5s ease;
 }
 
 .hero h1{
 font-family:'Playfair Display',serif;
-font-size:4rem;
-font-weight:700;
-letter-spacing:2px;
+font-size:4.5rem;
+letter-spacing:3px;
+color:#f3b1c7;
 margin-bottom:15px;
 }
 
 .hero p{
-font-size:0.95rem;
-letter-spacing:2px;
+font-size:0.8rem;
+letter-spacing:3px;
 opacity:0.8;
 }
 
-/* séparation luxe */
 .hero::after{
 content:"";
 display:block;
 width:60px;
 height:1px;
-background:rgba(255,255,255,0.6);
+background:rgba(255,255,255,0.7);
 margin:25px auto 0;
 }
 
-section{padding:120px 10%;}
+section{
+padding:140px 12%;
+position:relative;
+z-index:1;
+}
 
-.title{text-align:center;margin-bottom:60px;}
+.title{
+text-align:center;
+margin-bottom:80px;
+}
+
 .title h2{
 font-family:'Playfair Display',serif;
-font-size:2.5rem;
-margin-bottom:10px;
+font-size:2.8rem;
 }
 
 .services{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:40px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:50px;
 }
 
 .card{
+padding:35px;
 background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 20px 50px rgba(0,0,0,0.05);
+border-radius:25px;
+box-shadow:0 25px 60px rgba(0,0,0,0.05);
 transition:0.4s;
 }
 
-.card:hover{transform:translateY(-10px);}
-
-.card h3{margin-bottom:10px;}
+.card:hover{
+transform:translateY(-15px);
+box-shadow:0 30px 80px rgba(0,0,0,0.08);
+}
 
 .about{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:60px;
+gap:80px;
 align-items:center;
 }
 
 .about img{
 width:100%;
-border-radius:20px;
+border-radius:25px;
 }
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
 }
 
 .gallery img{
-width:100%;height:280px;object-fit:cover;border-radius:15px;
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:20px;
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.04);
+filter:brightness(1.1);
 }
 
 .contact{
-background:#2d2d2d;color:white;
-padding:80px;text-align:center;border-radius:30px;
+background:#1f1f1f;
+color:white;
+padding:100px;
+border-radius:40px;
+text-align:center;
+}
+
+/* BOUTON HAUT DE GAMME */
+.btn{
+padding:18px 60px;
+border-radius:60px;
+background:linear-gradient(135deg,#e8a8bd,#f5c6d5);
+color:white;
+text-decoration:none;
+letter-spacing:2px;
+font-size:0.9rem;
+transition:0.3s;
+box-shadow:0 15px 40px rgba(232,168,189,0.4);
+}
+
+.btn:hover{
+transform:translateY(-4px);
+box-shadow:0 20px 60px rgba(232,168,189,0.6);
 }
 
 footer{
-text-align:center;padding:30px;font-size:0.8rem;color:#888;
+text-align:center;
+padding:40px;
+font-size:0.8rem;
+color:#999;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(30px);} 
+to{opacity:1;transform:translateY(0);} 
 }
 
 @media(max-width:900px){
 .about{grid-template-columns:1fr;}
-nav{padding:15px 20px;flex-direction:column;gap:10px;}
+nav{padding:20px;flex-direction:column;gap:10px;}
 }
-
 </style>
 </head>
 
@@ -160,15 +249,13 @@ nav{padding:15px 20px;flex-direction:column;gap:10px;}
 <h3>Pose Gel</h3>
 <p>Structure et tenue longue durée avec finition brillante.</p>
 </div>
-
 <div class="card">
 <h3>Nail Art</h3>
-<p>Créations sur mesure adaptées aux envies et tendances.</p>
+<p>Créations uniques adaptées à chaque cliente.</p>
 </div>
-
 <div class="card">
 <h3>Manucure complète</h3>
-<p>Soin esthétique complet des mains et des ongles.</p>
+<p>Soin esthétique complet pour des mains impeccables.</p>
 </div>
 </div>
 </section>
@@ -178,8 +265,8 @@ nav{padding:15px 20px;flex-direction:column;gap:10px;}
 <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796">
 <div>
 <h2>Le salon</h2>
-<p>Rose & Paillettes by Amandine vous accueille dans un espace raffiné à Saint-Céré.
-Chaque prestation est réalisée avec exigence afin d’offrir un résultat élégant et durable.</p>
+<p>Un espace confidentiel et raffiné, dédié au soin du détail et à l’élégance.
+Chaque prestation est pensée pour sublimer votre style avec justesse.</p>
 </div>
 </div>
 </section>
