@@ -1,11 +1,9 @@
-# Refonte Premium — Rose & Paillettes
-
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>Rose & Paillettes — Institut Luxury Nails</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,27 +35,30 @@ overflow-x:hidden;
 position:relative;
 }
 
-/* BACKGROUND LUXE */
+/* BACKGROUND PREMIUM */
 
 body::before{
 content:"";
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at top right, rgba(216,169,109,0.25), transparent 30%),
-radial-gradient(circle at bottom left, rgba(246,183,210,0.18), transparent 30%),
-url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1800');
+linear-gradient(rgba(5,5,8,0.72),rgba(5,5,8,0.82)),
+url('https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=2000&auto=format&fit=crop');
 background-size:cover;
 background-position:center;
-filter:brightness(0.28) saturate(1.2);
-z-index:-4;
-transform:scale(1.1);
-animation:bgMove 20s ease-in-out infinite alternate;
+filter:saturate(1.15) contrast(1.05);
+z-index:-5;
+animation:bgZoom 18s ease-in-out infinite alternate;
+transform:scale(1.08);
 }
 
-@keyframes bgMove{
-0%{transform:scale(1.1) translateY(0px);}
-100%{transform:scale(1.18) translateY(-20px);}
+@keyframes bgZoom{
+0%{
+transform:scale(1.08) translateY(0px);
+}
+100%{
+transform:scale(1.15) translateY(-15px);
+}
 }
 
 /* PARTICULES */
@@ -67,6 +68,7 @@ position:fixed;
 inset:0;
 pointer-events:none;
 z-index:-2;
+overflow:hidden;
 }
 
 .sparkles span{
@@ -93,6 +95,8 @@ transform:translateY(-10vh) scale(1.4);
 opacity:0;
 }
 }
+
+/* NAVBAR */
 
 nav{
 position:fixed;
@@ -155,11 +159,41 @@ justify-content:center;
 text-align:center;
 padding:0 20px;
 position:relative;
+overflow:hidden;
 }
 
 .hero{
 max-width:1000px;
-animation:fadeUp 1.4s ease;
+animation:fadeUp 1.5s ease;
+position:relative;
+z-index:2;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:700px;
+height:700px;
+background:radial-gradient(circle,
+rgba(246,183,210,0.16),
+transparent 65%);
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:-1;
+filter:blur(40px);
+animation:pulseGlow 5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow{
+0%,100%{
+opacity:0.7;
+transform:translate(-50%,-50%) scale(1);
+}
+50%{
+opacity:1;
+transform:translate(-50%,-50%) scale(1.08);
+}
 }
 
 .hero .badge{
@@ -180,6 +214,23 @@ font-size:6.5rem;
 line-height:1;
 margin-bottom:25px;
 text-shadow:0 10px 30px rgba(0,0,0,0.4);
+position:relative;
+}
+
+.hero h1::after{
+content:"";
+position:absolute;
+left:50%;
+bottom:-18px;
+transform:translateX(-50%);
+width:180px;
+height:2px;
+background:linear-gradient(
+90deg,
+transparent,
+var(--gold),
+transparent
+);
 }
 
 .hero h1 span{
@@ -194,6 +245,7 @@ margin:auto;
 line-height:1.9;
 font-size:1rem;
 opacity:0.85;
+margin-top:45px;
 }
 
 .hero-buttons{
@@ -203,6 +255,8 @@ gap:20px;
 justify-content:center;
 flex-wrap:wrap;
 }
+
+/* BUTTONS */
 
 .btn{
 padding:18px 42px;
@@ -214,6 +268,29 @@ font-weight:600;
 transition:0.4s;
 position:relative;
 overflow:hidden;
+display:inline-flex;
+justify-content:center;
+align-items:center;
+}
+
+.btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.35),
+transparent
+);
+transition:0.8s;
+}
+
+.btn:hover::before{
+left:120%;
 }
 
 .btn-primary{
@@ -238,6 +315,22 @@ transform:translateY(-5px) scale(1.04);
 section{
 padding:140px 10%;
 position:relative;
+}
+
+section::before{
+content:"";
+position:absolute;
+top:0;
+left:50%;
+transform:translateX(-50%);
+width:180px;
+height:1px;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(216,169,109,0.8),
+transparent
+);
 }
 
 .title{
@@ -266,9 +359,14 @@ gap:35px;
 }
 
 .card{
-background:rgba(255,255,255,0.05);
+background:linear-gradient(
+180deg,
+rgba(255,255,255,0.10),
+rgba(255,255,255,0.04)
+);
+
 border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(16px);
+backdrop-filter:blur(24px);
 padding:45px;
 border-radius:35px;
 transition:0.6s;
@@ -285,6 +383,22 @@ height:250px;
 background:radial-gradient(circle,rgba(255,255,255,0.15),transparent);
 top:-120px;
 right:-120px;
+}
+
+.card::after{
+content:"";
+position:absolute;
+top:-150%;
+left:-60%;
+width:40%;
+height:300%;
+background:rgba(255,255,255,0.08);
+transform:rotate(25deg);
+transition:1s;
+}
+
+.card:hover::after{
+left:130%;
 }
 
 .card:hover{
@@ -322,13 +436,17 @@ margin-bottom:20px;
 position:relative;
 overflow:hidden;
 border-radius:28px;
+break-inside:avoid;
 }
 
 .gallery img{
 width:100%;
+height:auto;
 display:block;
-transition:0.7s;
-filter:brightness(0.9);
+border-radius:28px;
+object-fit:cover;
+transition:0.8s;
+filter:brightness(0.92);
 }
 
 .gallery-item::after{
@@ -336,6 +454,7 @@ content:"";
 position:absolute;
 inset:0;
 background:linear-gradient(to top,rgba(0,0,0,0.55),transparent);
+pointer-events:none;
 }
 
 .gallery-item:hover img{
@@ -352,12 +471,18 @@ backdrop-filter:blur(18px);
 padding:70px;
 border-radius:40px;
 text-align:center;
+box-shadow:0 20px 60px rgba(0,0,0,0.25);
 }
 
 .contact h2{
 font-family:'Cinzel',serif;
 font-size:4rem;
 margin-bottom:20px;
+}
+
+.contact p{
+margin-bottom:10px;
+opacity:0.9;
 }
 
 .booking{
@@ -377,6 +502,15 @@ background:rgba(255,255,255,0.08);
 color:white;
 font-family:inherit;
 backdrop-filter:blur(12px);
+outline:none;
+border:1px solid transparent;
+transition:0.4s;
+}
+
+.booking input:focus,
+.booking textarea:focus{
+border-color:rgba(216,169,109,0.6);
+box-shadow:0 0 20px rgba(216,169,109,0.2);
 }
 
 .booking textarea{
@@ -388,6 +522,8 @@ resize:none;
 .booking textarea::placeholder{
 color:rgba(255,255,255,0.6);
 }
+
+/* FOOTER */
 
 footer{
 padding:40px;
@@ -409,15 +545,23 @@ opacity:1;
 transform:translateY(0);
 }
 
+/* HERO ENTRY */
+
 @keyframes fadeUp{
-from{
+0%{
 opacity:0;
-transform:translateY(40px);
+transform:
+translateY(60px)
+scale(0.96);
+filter:blur(10px);
 }
 
-to{
+100%{
 opacity:1;
-transform:translateY(0);
+transform:
+translateY(0)
+scale(1);
+filter:blur(0px);
 }
 }
 
@@ -454,8 +598,106 @@ padding:110px 7%;
 padding:40px 25px;
 }
 
+.gallery{
+columns:1;
 }
 
+}
+/* SOCIALS */
+
+.social-buttons{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.social-btn{
+position:relative;
+display:flex;
+align-items:center;
+gap:14px;
+padding:20px 38px;
+border-radius:70px;
+text-decoration:none;
+color:white;
+font-weight:600;
+letter-spacing:1px;
+overflow:hidden;
+transition:0.5s;
+border:1px solid rgba(255,255,255,0.12);
+backdrop-filter:blur(18px);
+background:rgba(255,255,255,0.06);
+box-shadow:
+0 10px 30px rgba(0,0,0,0.25),
+inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.social-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.35),
+transparent
+);
+transition:0.8s;
+}
+
+.social-btn:hover::before{
+left:120%;
+}
+
+.social-btn:hover{
+transform:translateY(-8px) scale(1.04);
+}
+
+.social-btn svg{
+z-index:2;
+}
+
+.social-btn span{
+z-index:2;
+}
+
+/* INSTAGRAM */
+
+.instagram{
+background:
+linear-gradient(
+135deg,
+rgba(131,58,180,0.35),
+rgba(253,29,29,0.25),
+rgba(252,176,69,0.25)
+);
+}
+
+.instagram:hover{
+box-shadow:
+0 20px 50px rgba(225,48,108,0.35);
+}
+
+/* FACEBOOK */
+
+.facebook{
+background:
+linear-gradient(
+135deg,
+rgba(24,119,242,0.35),
+rgba(80,140,255,0.18)
+);
+}
+
+.facebook:hover{
+box-shadow:
+0 20px 50px rgba(24,119,242,0.35);
+}
 </style>
 </head>
 
@@ -473,20 +715,26 @@ padding:40px 25px;
 </div>
 
 <nav>
-<div class="logo">ROSE & PAILLETTES</div>
+
+<div class="logo">
+ROSE & PAILLETTES
+</div>
 
 <ul>
 <li><a href="#services">Prestations</a></li>
 <li><a href="#gallery">Galerie</a></li>
 <li><a href="#contact">Réserver</a></li>
 </ul>
+
 </nav>
 
 <header>
 
 <div class="hero">
 
-<div class="badge">INSTITUT LUXE • SAINT-CÉRÉ</div>
+<div class="badge">
+INSTITUT LUXE • SAINT-CÉRÉ
+</div>
 
 <h1>
 <span>Rose</span> & <span>Paillettes</span>
@@ -498,8 +746,15 @@ Design élégant, atmosphère intime et prestations premium.
 </p>
 
 <div class="hero-buttons">
-<a href="#contact" class="btn btn-primary">Prendre rendez-vous</a>
-<a href="#gallery" class="btn btn-secondary">Voir les créations</a>
+
+<a href="#contact" class="btn btn-primary">
+Prendre rendez-vous
+</a>
+
+<a href="#gallery" class="btn btn-secondary">
+Voir les créations
+</a>
+
 </div>
 
 </div>
@@ -517,26 +772,38 @@ Design élégant, atmosphère intime et prestations premium.
 
 <div class="card">
 <h3>Pose Gel Signature</h3>
+
 <p>
 Une architecture parfaite avec finition brillante et tenue longue durée.
 </p>
-<div class="price">À partir de 45€</div>
+
+<div class="price">
+À partir de 45€
+</div>
 </div>
 
 <div class="card">
 <h3>Nail Art Couture</h3>
+
 <p>
 Créations artistiques personnalisées inspirées des tendances luxe et minimalistes.
 </p>
-<div class="price">Sur devis</div>
+
+<div class="price">
+Sur devis
+</div>
 </div>
 
 <div class="card">
 <h3>Manucure Premium</h3>
+
 <p>
 Soin complet des mains avec finition élégante et hydratation intense.
 </p>
-<div class="price">À partir de 40€</div>
+
+<div class="price">
+À partir de 40€
+</div>
 </div>
 
 </div>
@@ -553,9 +820,7 @@ Soin complet des mains avec finition élégante et hydratation intense.
 <div class="gallery">
 
 <div class="gallery-item">
-
-<img src="https://i.postimg.cc/bvsmbG46/629979650-17999852282902754-7582938986735751047-n.jpg" 
-     width="300">
+<img src="https://i.postimg.cc/bvsmbG46/629979650-17999852282902754-7582938986735751047-n.jpg">
 </div>
 
 <div class="gallery-item">
@@ -563,9 +828,7 @@ Soin complet des mains avec finition élégante et hydratation intense.
 </div>
 
 <div class="gallery-item">
-
-<img src="https://i.postimg.cc/8PWYZnkv/Pose-de-Noel-Gainage-sur-ongles-naturels-effet-pull-et-flocons-effetpull-nailsfl.webp" 
-     style="max-width:600px; width:100%; height:auto;">
+<img src="https://i.postimg.cc/8PWYZnkv/Pose-de-Noel-Gainage-sur-ongles-naturels-effet-pull-et-flocons-effetpull-nailsfl.webp">
 </div>
 
 <div class="gallery-item">
@@ -595,23 +858,69 @@ Soin complet des mains avec finition élégante et hydratation intense.
 <p>contact@rosepaillettes.fr</p>
 
 <form class="booking">
+
 <input type="text" placeholder="Votre nom">
+
 <input type="email" placeholder="Votre email">
+
 <textarea placeholder="Votre demande"></textarea>
-<button class="btn btn-primary">Envoyer</button>
+
+<button class="btn btn-primary">
+Envoyer
+</button>
+
 </form>
 
 </div>
 
 </section>
+<section class="socials reveal">
 
+<div class="title">
+<h2>Réseaux</h2>
+<p>SUIVEZ NOS CRÉATIONS</p>
+</div>
+
+<div class="social-buttons">
+
+<a 
+href="https://www.instagram.com/rose_et_paillettes46/" 
+target="_blank"
+class="social-btn instagram"
+>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
+<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.087 3.269.222 2.76.42a5.9 5.9 0 0 0-2.14 1.4A5.9 5.9 0 0 0 .42 3.96C.222 4.47.087 5.05.048 5.903.01 6.756 0 7.029 0 9.2s.01 2.444.048 3.297c.039.853.174 1.434.372 1.943a5.9 5.9 0 0 0 1.4 2.14 5.9 5.9 0 0 0 2.14 1.4c.509.198 1.09.333 1.943.372C5.556 15.99 5.829 16 8 16s2.444-.01 3.297-.048c.853-.039 1.434-.174 1.943-.372a5.9 5.9 0 0 0 2.14-1.4 5.9 5.9 0 0 0 1.4-2.14c.198-.509.333-1.09.372-1.943C15.99 11.644 16 11.371 16 9.2s-.01-2.444-.048-3.297c-.039-.853-.174-1.434-.372-1.943a5.9 5.9 0 0 0-1.4-2.14 5.9 5.9 0 0 0-2.14-1.4c-.509-.198-1.09-.333-1.943-.372C10.444.01 10.171 0 8 0zm0 1.441c2.134 0 2.389.008 3.234.046.78.036 1.204.166 1.485.276.372.145.637.318.916.597.279.279.452.544.597.916.11.281.24.705.276 1.485.038.845.046 1.1.046 3.234s-.008 2.389-.046 3.234c-.036.78-.166 1.204-.276 1.485a4.43 4.43 0 0 1-.597.916 4.43 4.43 0 0 1-.916.597c-.281.11-.705.24-1.485.276-.845.038-1.1.046-3.234.046s-2.389-.008-3.234-.046c-.78-.036-1.204-.166-1.485-.276a4.43 4.43 0 0 1-.916-.597 4.43 4.43 0 0 1-.597-.916c-.11-.281-.24-.705-.276-1.485C1.449 10.589 1.441 10.334 1.441 8s.008-2.389.046-3.234c.036-.78.166-1.204.276-1.485.145-.372.318-.637.597-.916.279-.279.544-.452.916-.597.281-.11.705-.24 1.485-.276C5.611 1.449 5.866 1.441 8 1.441zm0 2.455A4.104 4.104 0 1 0 8 12.104 4.104 4.104 0 0 0 8 3.896zm0 6.766A2.662 2.662 0 1 1 8 5.338a2.662 2.662 0 0 1 0 5.324zm4.27-7.845a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92z"/>
+</svg>
+
+<span>Instagram</span>
+
+</a>
+
+<a 
+href="https://www.facebook.com/p/Amandine-Dufour-100089849717942/" 
+target="_blank"
+class="social-btn facebook"
+>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+<path d="M16 8.049C16 3.603 12.418 0 8 0S0 3.603 0 8.049c0 4.017 2.926 7.347 6.75 7.951v-5.625H4.719V8.049H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.994 0-1.304.621-1.304 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+</svg>
+
+<span>Facebook</span>
+
+</a>
+
+</div>
+
+</section>
 <footer>
 © 2026 Rose & Paillettes by Amandine
 </footer>
 
 <script>
 
-/* SCROLL ANIMATION */
+/* SCROLL REVEAL */
 
 const reveals = document.querySelectorAll('.reveal');
 
@@ -629,7 +938,7 @@ reveal.classList.add('active');
 
 });
 
-/* 3D CARD EFFECT */
+/* 3D CARDS */
 
 const cards = document.querySelectorAll('.card');
 
@@ -642,8 +951,8 @@ const rect = card.getBoundingClientRect();
 const x = e.clientX - rect.left;
 const y = e.clientY - rect.top;
 
-const rotateY = ((x / rect.width) - 0.5) * 20;
-const rotateX = ((y / rect.height) - 0.5) * -20;
+const rotateY = ((x / rect.width) - 0.5) * 18;
+const rotateX = ((y / rect.height) - 0.5) * -18;
 
 card.style.transform = `
 rotateY(${rotateY}deg)
@@ -654,7 +963,13 @@ translateY(-10px)
 });
 
 card.addEventListener('mouseleave', () => {
-card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+
+card.style.transform = `
+rotateY(0deg)
+rotateX(0deg)
+translateY(0px)
+`;
+
 });
 
 });
@@ -663,4 +978,3 @@ card.style.transform = 'rotateY(0deg) rotateX(0deg)';
 
 </body>
 </html>
-```
