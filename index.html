@@ -296,92 +296,20 @@ z-index:2;
  
 /* LOGO HERO */
 
-
 .hero-logo-container{
-position:relative;
 display:flex;
 justify-content:center;
 align-items:center;
 margin-bottom:30px;
-overflow:hidden;
-}
-
-/* Glow doré */
-
-.hero-logo-container::before{
-content:"";
-position:absolute;
-
-top:50%;
-left:50%;
-transform:translate(-50%, -50%);
-
-width:600px;
-height:600px;
-
-background:radial-gradient(
-circle,
-rgba(216,169,109,0.18),
-transparent 70%
-);
-
-filter:blur(80px);
-z-index:-1;
-
-animation:goldGlow 6s ease-in-out infinite;
-}
-
-/* Lumière qui passe */
-
-.hero-logo-container::after{
-content:"";
-position:absolute;
-top:0;
-left:-120%;
-width:200%;
-height:100%;
-
-background:linear-gradient(
-120deg,
-transparent 30%,
-rgba(255,255,255,0.35),
-transparent 70%
-);
-
-animation:shineMove 6s infinite;
- 
-.hero-logo-container::after{
-mix-blend-mode:screen;
-}
-
 }
 
 .hero-logo{
 max-width:520px;
 width:100%;
 height:auto;
-
-opacity:0;
-transform:scale(0.9) translateY(40px);
-
-filter:
-drop-shadow(0 20px 40px rgba(0,0,0,0.6))
-drop-shadow(0 0 40px rgba(216,169,109,0.15));
-
-animation:
-logoReveal 1.4s ease forwards,
-logoFloat 5s ease-in-out infinite alternate 1.4s;
-
-
-@keyframes shineMove{
-0%{
-left:-120%;
+filter:drop-shadow(0 15px 35px rgba(0,0,0,0.6));
+animation:logoFloat 5s ease-in-out infinite alternate;
 }
-100%{
-left:120%;
-}
-}
-
 
 .hero-logo:hover{
 transform:scale(1.04);
@@ -1166,39 +1094,6 @@ grid-template-columns:1fr;
 height:280px;
 }
 
-}
- 
-@keyframes goldGlow{
-0%,100%{
-opacity:0.6;
-transform:translate(-50%, -50%) scale(1);
-}
-50%{
-opacity:1;
-transform:translate(-50%, -50%) scale(1.15);
-}
-}
-
-@keyframes shineMove{
-0%{
-left:-120%;
-}
-100%{
-left:120%;
-}
-}
-
-@keyframes logoReveal{
-0%{
-opacity:0;
-transform:scale(0.85) translateY(60px);
-filter:blur(12px);
-}
-100%{
-opacity:1;
-transform:scale(1) translateY(0);
-filter:blur(0);
-}
 }
 </style>
 </head>
