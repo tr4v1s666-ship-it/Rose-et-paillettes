@@ -116,28 +116,42 @@ border-bottom:1px solid rgba(255,255,255,0.08);
 /* REMPLACE ENTIÈREMENT TON CSS .logo PAR CELUI-CI */
 
 .logo{
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.logo img{
-height:82px;
-width:auto;
-object-fit:contain;
-filter:
-drop-shadow(0 0 12px rgba(246,183,210,0.35))
-drop-shadow(0 0 25px rgba(216,169,109,0.25));
-transition:0.4s;
-border-radius:18px;
-}
-
-.logo img:hover{
-transform:scale(1.04);
-filter:
-drop-shadow(0 0 18px rgba(246,183,210,0.45))
-drop-shadow(0 0 35px rgba(216,169,109,0.35));
-}
+ font-family:'Cinzel',serif;
+ font-size:1.8rem;
+ letter-spacing:4px;
+ background:linear-gradient(90deg,var(--gold),#fff,var(--pink));
+ -webkit-background-clip:text;
+ -webkit-text-fill-color:transparent;
+ }
+ 
+ nav ul{
+ display:flex;
+ gap:35px;
+ list-style:none;
+ }
+ 
+ nav a{
+ text-decoration:none;
+ color:white;
+ font-size:0.8rem;
+ letter-spacing:2px;
+ position:relative;
+ }
+ 
+ nav a::after{
+ content:"";
+ position:absolute;
+ left:0;
+ bottom:-7px;
+ width:0%;
+ height:1px;
+ background:linear-gradient(90deg,var(--gold),var(--pink));
+ transition:0.4s;
+ }
+ 
+ nav a:hover::after{
+ width:100%;
+ }
 
 /* EFFET LUMIÈRE */
 
@@ -1075,8 +1089,8 @@ height:280px;
 <!-- REMPLACE LE BLOC LOGO ACTUEL PAR CELUI-CI -->
 
 <div class="logo">
-<img src="https://i.postimg.cc/X752KVwJ/633927036-897947146543601-142961298766332761-n.jpg">
-</div>
+ ROSE & PAILLETTES
+ </div>
 
 <ul>
 <li><a href="#services">Prestations</a></li>
