@@ -293,6 +293,33 @@ animation:fadeUp 1.5s ease;
 position:relative;
 z-index:2;
 }
+ 
+/* LOGO HERO */
+
+.hero-logo-container{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:30px;
+}
+
+.hero-logo{
+max-width:520px;
+width:100%;
+height:auto;
+filter:drop-shadow(0 15px 35px rgba(0,0,0,0.6));
+animation:logoFloat 5s ease-in-out infinite alternate;
+}
+
+.hero-logo:hover{
+transform:scale(1.04);
+}
+
+@keyframes logoFloat{
+0%{transform:translateY(0);}
+100%{transform:translateY(-12px);}
+}
+
 
 .hero::before{
 content:"";
@@ -1108,9 +1135,13 @@ height:280px;
 INSTITUT LUXE • SAINT-CÉRÉ
 </div>
 
-<h1>
-<span>Rose</span> & <span>Paillettes</span>
-</h1>
+
+<div class="hero-logo-container">
+  <img src="https://i.postimg.cc/GmdmdmKx/Chat-GPT-Image-27-mai-2026-09-58-45.png" 
+       alt="Rose & Paillettes"
+       class="hero-logo">
+</div>
+
 
 <p>
 Une expérience beauté raffinée inspirée des instituts parisiens haut de gamme.
