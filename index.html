@@ -111,13 +111,55 @@ z-index:999;
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
+/* AJOUTE OU REMPLACE LE CSS .logo PAR CELUI-CI */
+
 .logo{
-font-family:'Cinzel',serif;
-font-size:1.8rem;
-letter-spacing:4px;
-background:linear-gradient(90deg,var(--gold),#fff,var(--pink));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.logo img{
+width:95px;
+height:95px;
+object-fit:contain;
+filter:
+drop-shadow(0 0 18px rgba(246,183,210,0.35))
+drop-shadow(0 0 35px rgba(216,169,109,0.18));
+transition:0.5s;
+animation:logoFloat 5s ease-in-out infinite;
+}
+
+.logo img:hover{
+transform:scale(1.08) rotate(2deg);
+filter:
+drop-shadow(0 0 24px rgba(246,183,210,0.5))
+drop-shadow(0 0 45px rgba(216,169,109,0.3));
+}
+
+/* ANIMATION */
+
+@keyframes logoFloat{
+
+0%,100%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-6px);
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+.logo img{
+width:80px;
+height:80px;
+}
+
 }
 
 nav ul{
@@ -962,7 +1004,7 @@ height:280px;
 <nav>
 
 <div class="logo">
-ROSE & PAILLETTES
+<img src="image(1).png" alt="Rose & Paillettes Logo">
 </div>
 
 <ul>
