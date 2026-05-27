@@ -698,6 +698,169 @@ rgba(80,140,255,0.18)
 box-shadow:
 0 20px 50px rgba(24,119,242,0.35);
 }
+  /* INFOS */
+
+.infos-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:35px;
+margin-top:60px;
+}
+
+.info-card{
+background:linear-gradient(
+180deg,
+rgba(255,255,255,0.10),
+rgba(255,255,255,0.04)
+);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(24px);
+padding:35px;
+border-radius:35px;
+position:relative;
+overflow:hidden;
+box-shadow:0 20px 60px rgba(0,0,0,0.2);
+}
+
+.info-card h3{
+font-family:'Cinzel',serif;
+font-size:2rem;
+margin-bottom:15px;
+}
+
+.info-card p{
+opacity:0.85;
+line-height:1.8;
+margin-bottom:25px;
+}
+
+/* WHATSAPP */
+
+.whatsapp-btn{
+display:inline-flex;
+align-items:center;
+gap:14px;
+padding:18px 30px;
+border-radius:60px;
+text-decoration:none;
+color:white;
+font-weight:600;
+background:linear-gradient(
+135deg,
+#25d366,
+#1ebe5d
+);
+transition:0.4s;
+position:relative;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(37,211,102,0.3);
+}
+
+.whatsapp-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.35),
+transparent
+);
+transition:0.8s;
+}
+
+.whatsapp-btn:hover::before{
+left:120%;
+}
+
+.whatsapp-btn:hover{
+transform:translateY(-6px) scale(1.04);
+}
+
+/* MAP */
+
+.map-container{
+overflow:hidden;
+border-radius:25px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.map-container iframe{
+width:100%;
+height:320px;
+border:none;
+filter:grayscale(1) invert(0.92) contrast(1.2);
+}
+
+/* REVIEWS */
+
+.reviews{
+margin-top:80px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.review-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+padding:35px;
+border-radius:30px;
+transition:0.5s;
+position:relative;
+overflow:hidden;
+}
+
+.review-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 50px rgba(0,0,0,0.25);
+}
+
+.review-card::before{
+content:"";
+position:absolute;
+top:-120px;
+right:-120px;
+width:220px;
+height:220px;
+background:radial-gradient(
+circle,
+rgba(216,169,109,0.2),
+transparent
+);
+}
+
+.stars{
+font-size:1.3rem;
+color:var(--gold);
+margin-bottom:20px;
+letter-spacing:3px;
+}
+
+.review-card p{
+line-height:1.9;
+opacity:0.88;
+margin-bottom:25px;
+}
+
+.review-card h4{
+font-weight:600;
+letter-spacing:1px;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+.map-container iframe{
+height:260px;
+}
+
+}
 </style>
 </head>
 
@@ -910,6 +1073,103 @@ class="social-btn facebook"
 <span>Facebook</span>
 
 </a>
+
+</div>
+
+</section>
+  <section class="infos reveal">
+
+<div class="title">
+<h2>Nous Trouver</h2>
+<p>CONTACT • LOCALISATION • AVIS CLIENTES</p>
+</div>
+
+<div class="infos-grid">
+
+<!-- WHATSAPP -->
+
+<div class="info-card">
+
+<h3>Contact WhatsApp</h3>
+
+<p>
+Échange rapide pour vos rendez-vous, questions ou demandes personnalisées.
+</p>
+
+<a 
+href="https://wa.me/33688103783" 
+target="_blank"
+class="whatsapp-btn"
+>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+<path d="M13.601 2.326A7.854 7.854 0 0 0 8.021 0C3.61 0 .03 3.58.03 7.99c0 1.407.367 2.78 1.064 3.99L0 16l4.14-1.086a7.96 7.96 0 0 0 3.88 1.003h.003c4.41 0 7.99-3.58 7.99-7.99a7.94 7.94 0 0 0-2.412-5.601zM8.024 14.56a6.6 6.6 0 0 1-3.36-.92l-.24-.143-2.46.646.657-2.4-.156-.247a6.58 6.58 0 0 1-1.013-3.505c.002-3.65 2.973-6.62 6.626-6.62a6.58 6.58 0 0 1 4.69 1.945 6.58 6.58 0 0 1 1.935 4.687c-.002 3.653-2.973 6.623-6.68 6.623zm3.636-4.93c-.2-.1-1.183-.584-1.367-.65-.183-.067-.317-.1-.45.1-.133.2-.516.65-.633.783-.117.133-.233.15-.433.05-.2-.1-.844-.31-1.607-.99-.594-.53-.995-1.184-1.112-1.384-.117-.2-.013-.308.087-.408.09-.089.2-.233.3-.35.1-.116.133-.2.2-.333.067-.133.033-.25-.017-.35-.05-.1-.45-1.083-.617-1.483-.162-.39-.327-.337-.45-.343l-.383-.007c-.133 0-.35.05-.533.25-.183.2-.7.683-.7 1.667s.717 1.933.817 2.067c.1.133 1.41 2.153 3.417 3.018.477.206.85.33 1.14.423.479.152.915.13 1.26.079.384-.057 1.183-.483 1.35-.95.167-.466.167-.866.117-.95-.05-.083-.183-.133-.383-.233z"/>
+</svg>
+
+<span>Discuter sur WhatsApp</span>
+
+</a>
+
+</div>
+
+<!-- GOOGLE MAP -->
+
+<div class="info-card map-card">
+
+<h3>Notre Institut</h3>
+
+<p>25 rue Pasteur • Saint-Céré</p>
+
+<div class="map-container">
+
+<iframe
+src="https://www.google.com/maps?q=25+rue+Pasteur+Saint-Céré&output=embed"
+allowfullscreen=""
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- AVIS -->
+
+<div class="reviews">
+
+<div class="review-card">
+<div class="stars">★★★★★</div>
+
+<p>
+“Accueil exceptionnel et prestations magnifiques.
+Le salon est sublime et le résultat est toujours parfait.”
+</p>
+
+<h4>Camille R.</h4>
+</div>
+
+<div class="review-card">
+<div class="stars">★★★★★</div>
+
+<p>
+“Une vraie expérience luxe.
+Travail minutieux et ambiance très haut de gamme.”
+</p>
+
+<h4>Sarah M.</h4>
+</div>
+
+<div class="review-card">
+<div class="stars">★★★★★</div>
+
+<p>
+“Les meilleurs ongles que j’ai eus.
+Le design du salon et la qualité sont incroyables.”
+</p>
+
+<h4>Julie A.</h4>
+</div>
 
 </div>
 
