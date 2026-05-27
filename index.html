@@ -8,50 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
-/* HERO CINEMATIC */
 
-header::before{
-content:"";
-position:absolute;
-inset:0;
-background:
-radial-gradient(
-circle at center,
-rgba(255,255,255,0.06),
-transparent 60%
-);
-animation:heroPulse 6s ease-in-out infinite;
-pointer-events:none;
-}
-
-@keyframes heroPulse{
-
-0%,100%{
-opacity:0.5;
-transform:scale(1);
-}
-
-50%{
-opacity:1;
-transform:scale(1.08);
-}
-
-}
-
-/* MOBILE GALLERY */
-
-@media(max-width:950px){
-
-.gallery{
-grid-template-columns:1fr;
-}
-
-.gallery-item{
-height:280px;
-}
-
-}
 <style>
 
 :root{
@@ -939,6 +896,50 @@ letter-spacing:1px;
 
 .map-container iframe{
 height:260px;
+}
+
+}
+    
+/* HERO CINEMATIC */
+
+header::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+radial-gradient(
+circle at center,
+rgba(255,255,255,0.06),
+transparent 60%
+);
+animation:heroPulse 6s ease-in-out infinite;
+pointer-events:none;
+}
+
+@keyframes heroPulse{
+
+0%,100%{
+opacity:0.5;
+transform:scale(1);
+}
+
+50%{
+opacity:1;
+transform:scale(1.08);
+}
+
+}
+
+/* MOBILE GALLERY */
+
+@media(max-width:950px){
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.gallery-item{
+height:280px;
 }
 
 }
