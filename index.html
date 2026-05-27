@@ -1,299 +1,732 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Rose & Paillettes — Luxury Nails Studio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<title>Rose & Paillettes — Institut Luxury Nails</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
-/* ========== RESET ========== */
+:root{
+--gold:#d8a96d;
+--pink:#f6b7d2;
+--dark:#0d0d12;
+--dark2:#14141b;
+--white:#ffffff;
+--glass:rgba(255,255,255,0.08);
+}
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
 font-family:'Montserrat',sans-serif;
-background:#07070b;
+background:linear-gradient(180deg,#09090c,#111117,#181821);
 color:white;
 overflow-x:hidden;
+position:relative;
 }
 
-/* ========== LOADER LUXE ========== */
-.loader{
-position:fixed;
-inset:0;
-background:#000;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:9999;
-animation:fadeOut 2.5s forwards 2.5s;
-}
+/* BACKGROUND PREMIUM */
 
-.loader h1{
-font-family:'Cinzel';
-letter-spacing:5px;
-background:linear-gradient(90deg,#d8a96d,#fff,#f6b7d2);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-font-size:2rem;
-}
-
-.loader span{
-margin-top:15px;
-opacity:0.6;
-font-size:0.9rem;
-}
-
-@keyframes fadeOut{
-to{opacity:0;visibility:hidden;}
-}
-
-/* ========== BACKGROUND ========== */
 body::before{
 content:"";
 position:fixed;
 inset:0;
 background:
-linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.85)),
+linear-gradient(rgba(5,5,8,0.72),rgba(5,5,8,0.82)),
 url('https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=2000&auto=format&fit=crop');
 background-size:cover;
 background-position:center;
-filter:contrast(1.1) saturate(1.1);
-z-index:-2;
-animation:zoom 25s infinite alternate;
+filter:saturate(1.15) contrast(1.05);
+z-index:-5;
+animation:bgZoom 18s ease-in-out infinite alternate;
+transform:scale(1.08);
 }
 
-@keyframes zoom{
-from{transform:scale(1.05);}
-to{transform:scale(1.2);}
+@keyframes bgZoom{
+0%{
+transform:scale(1.08) translateY(0px);
+}
+100%{
+transform:scale(1.15) translateY(-15px);
+}
 }
 
-/* ========== FLOAT BTN WHATSAPP ========== */
-.whatsapp-float{
+/* PARTICULES */
+
+.sparkles{
 position:fixed;
-bottom:20px;
-right:20px;
-background:#25d366;
-width:60px;
-height:60px;
+inset:0;
+pointer-events:none;
+z-index:-2;
+overflow:hidden;
+}
+
+.sparkles span{
+position:absolute;
+width:4px;
+height:4px;
+background:white;
 border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
-z-index:999;
-transition:0.3s;
+opacity:0;
+box-shadow:0 0 15px white;
+animation:sparkle 8s linear infinite;
 }
 
-.whatsapp-float:hover{
-transform:scale(1.1);
+@keyframes sparkle{
+0%{
+transform:translateY(100vh) scale(0);
+opacity:0;
+}
+15%{
+opacity:1;
+}
+100%{
+transform:translateY(-10vh) scale(1.4);
+opacity:0;
+}
 }
 
-/* ========== NAV ========== */
+/* NAVBAR */
+
 nav{
 position:fixed;
-top:0;
 width:100%;
+padding:25px 7%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 8%;
 background:rgba(0,0,0,0.35);
-backdrop-filter:blur(20px);
-z-index:1000;
+backdrop-filter:blur(18px);
+z-index:999;
+border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
+/* AJOUTE OU REMPLACE LE CSS .logo PAR CELUI-CI */
+
+/* REMPLACE ENTIÈREMENT TON CSS .logo PAR CELUI-CI */
+
 .logo{
-font-family:'Cinzel';
-font-size:1.5rem;
-background:linear-gradient(90deg,#d8a96d,#f6b7d2);
+ font-family:'Cinzel',serif;
+ font-size:1.8rem;
+ letter-spacing:4px;
+ background:linear-gradient(90deg,var(--gold),#fff,var(--pink));
+ -webkit-background-clip:text;
+ -webkit-text-fill-color:transparent;
+ }
+ 
+ nav ul{
+ display:flex;
+ gap:35px;
+ list-style:none;
+ }
+ 
+ nav a{
+ text-decoration:none;
+ color:white;
+ font-size:0.8rem;
+ letter-spacing:2px;
+ position:relative;
+ }
+ 
+ nav a::after{
+ content:"";
+ position:absolute;
+ left:0;
+ bottom:-7px;
+ width:0%;
+ height:1px;
+ background:linear-gradient(90deg,var(--gold),var(--pink));
+ transition:0.4s;
+ }
+ 
+ nav a:hover::after{
+ width:100%;
+ }
+
+/* EFFET LUMIÈRE */
+
+.logo::before{
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+
+background:
+radial-gradient(
+circle,
+rgba(246,183,210,0.20),
+transparent 70%
+);
+
+filter:blur(25px);
+
+z-index:-1;
+
+animation:pulseLogo 5s ease-in-out infinite;
+}
+
+/* ANIMATIONS */
+
+@keyframes logoFloat{
+
+0%,100%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+}
+
+@keyframes pulseLogo{
+
+0%,100%{
+opacity:0.5;
+transform:scale(1);
+}
+
+50%{
+opacity:1;
+transform:scale(1.1);
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+.logo img{
+width:95px;
+height:95px;
+padding:8px;
+}
+
+.logo::before{
+width:130px;
+height:130px;
+}
+
+}
+
+/* ANIMATION */
+
+@keyframes logoFloat{
+
+0%,100%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-6px);
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+.logo img{
+width:80px;
+height:80px;
+}
+
+}
+
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-size:0.8rem;
+letter-spacing:2px;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-7px;
+width:0%;
+height:1px;
+background:linear-gradient(90deg,var(--gold),var(--pink));
+transition:0.4s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* HERO */
+
+header{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 20px;
+position:relative;
+overflow:hidden;
+}
+
+.hero{
+max-width:1000px;
+animation:fadeUp 1.5s ease;
+position:relative;
+z-index:2;
+}
+ 
+/* LOGO HERO */
+
+.hero-logo-container{
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:30px;
+}
+
+.hero-logo{
+max-width:520px;
+width:100%;
+height:auto;
+filter:drop-shadow(0 15px 35px rgba(0,0,0,0.6));
+animation:logoFloat 5s ease-in-out infinite alternate;
+}
+
+.hero-logo:hover{
+transform:scale(1.04);
+}
+
+@keyframes logoFloat{
+0%{transform:translateY(0);}
+100%{transform:translateY(-12px);}
+}
+
+
+.hero::before{
+content:"";
+position:absolute;
+width:700px;
+height:700px;
+background:radial-gradient(circle,
+rgba(246,183,210,0.16),
+transparent 65%);
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:-1;
+filter:blur(40px);
+animation:pulseGlow 5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow{
+0%,100%{
+opacity:0.7;
+transform:translate(-50%,-50%) scale(1);
+}
+50%{
+opacity:1;
+transform:translate(-50%,-50%) scale(1.08);
+}
+}
+
+.hero .badge{
+padding:12px 26px;
+border-radius:40px;
+display:inline-block;
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
+backdrop-filter:blur(15px);
+font-size:0.8rem;
+letter-spacing:2px;
+margin-bottom:30px;
+}
+
+.hero h1{
+font-family:'Cinzel',serif;
+font-size:6.5rem;
+line-height:1;
+margin-bottom:25px;
+text-shadow:0 10px 30px rgba(0,0,0,0.4);
+position:relative;
+}
+
+.hero h1::after{
+content:"";
+position:absolute;
+left:50%;
+bottom:-18px;
+transform:translateX(-50%);
+width:180px;
+height:2px;
+background:linear-gradient(
+90deg,
+transparent,
+var(--gold),
+transparent
+);
+}
+
+.hero h1 span{
+background:linear-gradient(90deg,var(--gold),#fff,var(--pink));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-nav a{
-color:white;
-text-decoration:none;
-margin-left:20px;
-font-size:0.85rem;
-opacity:0.8;
-transition:0.3s;
-}
-
-nav a:hover{
-opacity:1;
-}
-
-/* ========== HERO ========== */
-header{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-position:relative;
-}
-
-.hero{
-max-width:900px;
-animation:fadeUp 1.5s ease;
-}
-
-.hero img{
-width:360px;
-filter:drop-shadow(0 20px 50px rgba(0,0,0,0.6));
-animation:float 5s ease-in-out infinite;
-}
-
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-15px);}
-}
-
-.hero h1{
-font-family:'Cinzel';
-font-size:4.8rem;
-margin-top:20px;
-}
-
 .hero p{
-opacity:0.75;
-margin-top:20px;
-line-height:1.8;
+max-width:750px;
+margin:auto;
+line-height:1.9;
+font-size:1rem;
+opacity:0.85;
+margin-top:45px;
 }
 
-/* CTA */
-.cta{
-margin-top:30px;
+.hero-buttons{
+margin-top:45px;
 display:flex;
-gap:15px;
+gap:20px;
 justify-content:center;
 flex-wrap:wrap;
 }
 
+/* BUTTONS */
+
 .btn{
-padding:15px 35px;
-border-radius:50px;
+padding:18px 42px;
+border-radius:60px;
 text-decoration:none;
+font-size:0.9rem;
+letter-spacing:2px;
 font-weight:600;
-transition:0.3s;
+transition:0.4s;
+position:relative;
+overflow:hidden;
+display:inline-flex;
+justify-content:center;
+align-items:center;
 }
 
-.primary{
-background:linear-gradient(135deg,#d8a96d,#f6b7d2);
-color:black;
+.btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.35),
+transparent
+);
+transition:0.8s;
 }
 
-.secondary{
-border:1px solid rgba(255,255,255,0.3);
+.btn:hover::before{
+left:120%;
+}
+
+.btn-primary{
+background:linear-gradient(135deg,var(--gold),var(--pink));
 color:white;
+box-shadow:0 15px 40px rgba(216,169,109,0.3);
+}
+
+.btn-secondary{
+background:rgba(255,255,255,0.08);
+color:white;
+border:1px solid rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
 }
 
 .btn:hover{
-transform:translateY(-5px);
+transform:translateY(-5px) scale(1.04);
 }
 
-/* ========== SECTIONS ========== */
+/* SECTION */
+
 section{
-padding:120px 10%;
+padding:140px 10%;
+position:relative;
+}
+
+section::before{
+content:"";
+position:absolute;
+top:0;
+left:50%;
+transform:translateX(-50%);
+width:180px;
+height:1px;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(216,169,109,0.8),
+transparent
+);
 }
 
 .title{
 text-align:center;
-margin-bottom:60px;
+margin-bottom:90px;
 }
 
 .title h2{
-font-family:'Cinzel';
-font-size:3rem;
+font-family:'Cinzel',serif;
+font-size:4rem;
+margin-bottom:15px;
 }
 
-/* ========== SERVICES ========== */
-.grid{
+.title p{
+letter-spacing:4px;
+opacity:0.7;
+font-size:0.8rem;
+}
+
+/* SERVICES */
+
+.services{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:35px;
 }
 
 .card{
-background:rgba(255,255,255,0.05);
+background:linear-gradient(
+180deg,
+rgba(255,255,255,0.10),
+rgba(255,255,255,0.04)
+);
+
 border:1px solid rgba(255,255,255,0.08);
-padding:35px;
-border-radius:25px;
-backdrop-filter:blur(20px);
-transition:0.4s;
+backdrop-filter:blur(24px);
+padding:45px;
+border-radius:35px;
+transition:0.6s;
+position:relative;
+overflow:hidden;
+transform-style:preserve-3d;
+}
+
+.card::before{
+content:"";
+position:absolute;
+width:250px;
+height:250px;
+background:radial-gradient(circle,rgba(255,255,255,0.15),transparent);
+top:-120px;
+right:-120px;
+}
+
+.card::after{
+content:"";
+position:absolute;
+top:-150%;
+left:-60%;
+width:40%;
+height:300%;
+background:rgba(255,255,255,0.08);
+transform:rotate(25deg);
+transition:1s;
+}
+
+.card:hover::after{
+left:130%;
 }
 
 .card:hover{
-transform:translateY(-10px);
-background:rgba(255,255,255,0.08);
+transform:translateY(-15px) rotateX(8deg) rotateY(-8deg);
+box-shadow:0 25px 60px rgba(0,0,0,0.35);
+}
+
+.card h3{
+font-family:'Cinzel',serif;
+font-size:2rem;
+margin-bottom:18px;
+}
+
+.card p{
+line-height:1.8;
+opacity:0.85;
 }
 
 .price{
-margin-top:15px;
-color:#d8a96d;
+margin-top:25px;
 font-weight:600;
+color:var(--gold);
+font-size:1.1rem;
 }
 
-/* ========== GALLERY ========== */
+/* GALLERY */
+
+/* GALLERY PREMIUM */
+
 .gallery{
-display:flex;
-gap:20px;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-padding-bottom:10px;
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(260px,1fr));
+gap:22px;
+align-items:start;
 }
 
 .gallery-item{
-min-width:300px;
-height:380px;
-border-radius:25px;
+position:relative;
 overflow:hidden;
-scroll-snap-align:center;
+border-radius:30px;
+height:340px;
+background:#111;
+box-shadow:
+0 10px 40px rgba(0,0,0,0.25);
 }
 
 .gallery img{
 width:100%;
 height:100%;
 object-fit:cover;
-transition:0.5s;
+display:block;
+transition:
+transform 0.9s ease,
+filter 0.6s ease;
+filter:
+brightness(0.92)
+contrast(1.05)
+saturate(1.05);
+}
+
+.gallery-item::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,0.55),
+transparent 45%
+);
+z-index:1;
+pointer-events:none;
+}
+
+.gallery-item::after{
+content:"";
+position:absolute;
+top:-120%;
+left:-40%;
+width:60%;
+height:300%;
+background:rgba(255,255,255,0.08);
+transform:rotate(25deg);
+transition:1s;
+z-index:2;
+pointer-events:none;
+}
+
+.gallery-item:hover::after{
+left:140%;
 }
 
 .gallery-item:hover img{
-transform:scale(1.1);
+transform:scale(1.08);
+filter:
+brightness(1.02)
+contrast(1.08)
+saturate(1.12);
 }
 
-/* ========== BOOKING ========== */
-.booking{
+/* CONTACT */
+
+.contact{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.08);
-padding:50px;
-border-radius:30px;
+backdrop-filter:blur(18px);
+padding:70px;
+border-radius:40px;
 text-align:center;
-backdrop-filter:blur(20px);
+box-shadow:0 20px 60px rgba(0,0,0,0.25);
 }
 
-input,textarea{
-width:100%;
-margin-top:15px;
-padding:15px;
-border-radius:15px;
+.contact h2{
+font-family:'Cinzel',serif;
+font-size:4rem;
+margin-bottom:20px;
+}
+
+.contact p{
+margin-bottom:10px;
+opacity:0.9;
+}
+
+.booking{
+margin-top:40px;
+display:grid;
+gap:18px;
+max-width:600px;
+margin-inline:auto;
+}
+
+.booking input,
+.booking textarea{
+padding:18px;
 border:none;
+border-radius:20px;
 background:rgba(255,255,255,0.08);
 color:white;
+font-family:inherit;
+backdrop-filter:blur(12px);
+outline:none;
+border:1px solid transparent;
+transition:0.4s;
 }
 
-/* ========== REVEAL ========== */
+.booking input:focus,
+.booking textarea:focus{
+border-color:rgba(216,169,109,0.6);
+box-shadow:0 0 20px rgba(216,169,109,0.2);
+}
+
+.booking textarea{
+min-height:160px;
+resize:none;
+}
+
+.booking input::placeholder,
+.booking textarea::placeholder{
+color:rgba(255,255,255,0.6);
+}
+
+/* FOOTER */
+
+footer{
+padding:40px;
+text-align:center;
+font-size:0.8rem;
+opacity:0.6;
+}
+
+/* SCROLL ANIM */
+
 .reveal{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(80px);
 transition:1s;
 }
 
@@ -302,128 +735,754 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* ========== FOOTER ========== */
-footer{
-text-align:center;
-padding:40px;
-opacity:0.6;
+/* HERO ENTRY */
+
+@keyframes fadeUp{
+0%{
+opacity:0;
+transform:
+translateY(60px)
+scale(0.96);
+filter:blur(10px);
 }
 
-/* ========== MOBILE ========== */
-@media(max-width:900px){
-.hero h1{font-size:3rem;}
-nav{flex-direction:column;gap:10px;}
+100%{
+opacity:1;
+transform:
+translateY(0)
+scale(1);
+filter:blur(0px);
+}
 }
 
+/* MOBILE */
+
+@media(max-width:950px){
+
+nav{
+flex-direction:column;
+gap:20px;
+padding:20px;
+}
+
+nav ul{
+flex-wrap:wrap;
+justify-content:center;
+gap:18px;
+}
+
+.hero h1{
+font-size:4rem;
+}
+
+.title h2,
+.contact h2{
+font-size:2.8rem;
+}
+
+section{
+padding:110px 7%;
+}
+
+.contact{
+padding:40px 25px;
+}
+
+.gallery{
+columns:1;
+}
+
+}
+/* SOCIALS */
+
+.social-buttons{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.social-btn{
+position:relative;
+display:flex;
+align-items:center;
+gap:14px;
+padding:20px 38px;
+border-radius:70px;
+text-decoration:none;
+color:white;
+font-weight:600;
+letter-spacing:1px;
+overflow:hidden;
+transition:0.5s;
+border:1px solid rgba(255,255,255,0.12);
+backdrop-filter:blur(18px);
+background:rgba(255,255,255,0.06);
+box-shadow:
+0 10px 30px rgba(0,0,0,0.25),
+inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.social-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.35),
+transparent
+);
+transition:0.8s;
+}
+
+.social-btn:hover::before{
+left:120%;
+}
+
+.social-btn:hover{
+transform:translateY(-8px) scale(1.04);
+}
+
+.social-btn svg{
+z-index:2;
+}
+
+.social-btn span{
+z-index:2;
+}
+
+/* INSTAGRAM */
+
+.instagram{
+background:
+linear-gradient(
+135deg,
+rgba(131,58,180,0.35),
+rgba(253,29,29,0.25),
+rgba(252,176,69,0.25)
+);
+}
+
+.instagram:hover{
+box-shadow:
+0 20px 50px rgba(225,48,108,0.35);
+}
+
+/* FACEBOOK */
+
+.facebook{
+background:
+linear-gradient(
+135deg,
+rgba(24,119,242,0.35),
+rgba(80,140,255,0.18)
+);
+}
+
+.facebook:hover{
+box-shadow:
+0 20px 50px rgba(24,119,242,0.35);
+}
+  /* INFOS */
+
+.infos-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:35px;
+margin-top:60px;
+}
+
+.info-card{
+background:linear-gradient(
+180deg,
+rgba(255,255,255,0.10),
+rgba(255,255,255,0.04)
+);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(24px);
+padding:35px;
+border-radius:35px;
+position:relative;
+overflow:hidden;
+box-shadow:0 20px 60px rgba(0,0,0,0.2);
+}
+
+.info-card h3{
+font-family:'Cinzel',serif;
+font-size:2rem;
+margin-bottom:15px;
+}
+
+.info-card p{
+opacity:0.85;
+line-height:1.8;
+margin-bottom:25px;
+}
+
+/* WHATSAPP */
+
+.whatsapp-btn{
+display:inline-flex;
+align-items:center;
+gap:14px;
+padding:18px 30px;
+border-radius:60px;
+text-decoration:none;
+color:white;
+font-weight:600;
+background:linear-gradient(
+135deg,
+#25d366,
+#1ebe5d
+);
+transition:0.4s;
+position:relative;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(37,211,102,0.3);
+}
+
+.whatsapp-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.35),
+transparent
+);
+transition:0.8s;
+}
+
+.whatsapp-btn:hover::before{
+left:120%;
+}
+
+.whatsapp-btn:hover{
+transform:translateY(-6px) scale(1.04);
+}
+
+/* MAP */
+
+.map-container{
+overflow:hidden;
+border-radius:25px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.map-container iframe{
+width:100%;
+height:320px;
+border:none;
+filter:grayscale(1) invert(0.92) contrast(1.2);
+}
+
+/* REVIEWS */
+
+.reviews{
+margin-top:80px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.review-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(20px);
+padding:35px;
+border-radius:30px;
+transition:0.5s;
+position:relative;
+overflow:hidden;
+}
+
+.review-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 50px rgba(0,0,0,0.25);
+}
+
+.review-card::before{
+content:"";
+position:absolute;
+top:-120px;
+right:-120px;
+width:220px;
+height:220px;
+background:radial-gradient(
+circle,
+rgba(216,169,109,0.2),
+transparent
+);
+}
+
+.stars{
+font-size:1.3rem;
+color:var(--gold);
+margin-bottom:20px;
+letter-spacing:3px;
+}
+
+.review-card p{
+line-height:1.9;
+opacity:0.88;
+margin-bottom:25px;
+}
+
+.review-card h4{
+font-weight:600;
+letter-spacing:1px;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+.map-container iframe{
+height:260px;
+}
+
+}
+    
+/* HERO CINEMATIC */
+
+header::before{
+content:"";
+position:absolute;
+inset:0;
+background:
+radial-gradient(
+circle at center,
+rgba(255,255,255,0.06),
+transparent 60%
+);
+animation:heroPulse 6s ease-in-out infinite;
+pointer-events:none;
+}
+
+@keyframes heroPulse{
+
+0%,100%{
+opacity:0.5;
+transform:scale(1);
+}
+
+50%{
+opacity:1;
+transform:scale(1.08);
+}
+
+}
+
+/* MOBILE GALLERY */
+
+@media(max-width:950px){
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.gallery-item{
+height:280px;
+}
+
+}
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div class="loader">
-<h1>ROSE & PAILLETTES</h1>
-<span>Luxury Nails Studio</span>
+<div class="sparkles">
+<span style="left:5%;animation-delay:0s"></span>
+<span style="left:15%;animation-delay:1s"></span>
+<span style="left:28%;animation-delay:3s"></span>
+<span style="left:42%;animation-delay:2s"></span>
+<span style="left:58%;animation-delay:5s"></span>
+<span style="left:72%;animation-delay:4s"></span>
+<span style="left:85%;animation-delay:1s"></span>
+<span style="left:95%;animation-delay:6s"></span>
 </div>
 
-<!-- WHATSAPP FLOAT -->
-<a class="whatsapp-float" href="https://wa.me/33688103783" target="_blank">💬</a>
-
-<!-- NAV -->
 <nav>
-<div class="logo">ROSE & PAILLETTES</div>
-<div>
-<a href="#services">Prestations</a>
-<a href="#gallery">Galerie</a>
-<a href="#booking">Réserver</a>
-</div>
+
+<!-- REMPLACE LE BLOC LOGO ACTUEL PAR CELUI-CI -->
+
+<div class="logo">
+ ROSE & PAILLETTES
+ </div>
+
+<ul>
+<li><a href="#services">Prestations</a></li>
+<li><a href="#gallery">Galerie</a></li>
+<li><a href="#contact">Réserver</a></li>
+</ul>
+
 </nav>
 
-<!-- HERO -->
 <header>
-<div class="hero">
-<img src="https://i.postimg.cc/GmdmdmKx/Chat-GPT-Image-27-mai-2026-09-58-45.png">
-<h1>Luxury Nail Experience</h1>
-<p>Institut premium • élégance française • soin haut de gamme</p>
 
-<div class="cta">
-<a class="btn primary" href="#booking">Réserver maintenant</a>
-<a class="btn secondary" href="#gallery">Voir le travail</a>
+<div class="hero">
+
+<div class="badge">
+INSTITUT LUXE • SAINT-CÉRÉ
 </div>
+
+
+<div class="hero-logo-container">
+  <img src="https://i.postimg.cc/GmdmdmKx/Chat-GPT-Image-27-mai-2026-09-58-45.png" 
+       alt="Rose & Paillettes"
+       class="hero-logo">
 </div>
+
+
+<p>
+Une expérience beauté raffinée inspirée des instituts parisiens haut de gamme.
+Design élégant, atmosphère intime et prestations premium.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#contact" class="btn btn-primary">
+Prendre rendez-vous
+</a>
+
+<a href="#gallery" class="btn btn-secondary">
+Voir les créations
+</a>
+
+</div>
+
+</div>
+
 </header>
 
-<!-- SERVICES -->
 <section id="services" class="reveal">
-<div class="title"><h2>Prestations</h2></div>
 
-<div class="grid">
+<div class="title">
+<h2>Prestations</h2>
+<p>ÉLÉGANCE • LUXE • FÉMINITÉ</p>
+</div>
+
+<div class="services">
+
+<div class="card">
+<h3>Pose Gel</h3>
+<p>Finition parfaite et tenue longue durée.</p>
+<div class="price">45€</div>
+</div>
 
 <div class="card">
 <h3>Semi-Permanent</h3>
-<p>Pose brillante naturelle</p>
+<p>Pose élégante, brillante et naturelle pour des ongles soignés au quotidien.</p>
 <div class="price">35€</div>
 </div>
 
 <div class="card">
-<h3>Gel / Chablon</h3>
-<p>Extension parfaite</p>
+<h3>Rallongement Chablon</h3>
+<p>Extension des ongles avec technique chablon pour un rendu solide et raffiné.</p>
 <div class="price">55€</div>
 </div>
 
 <div class="card">
-<h3>Nail Art Luxe</h3>
-<p>Créations personnalisées</p>
+<h3>Nail Art</h3>
+<p>Créations sur mesure haut de gamme.</p>
 <div class="price">Sur devis</div>
+ </div>
+
+<div class="card">
+<h3>Manucure Premium</h3>
+ <p>Soin complet des mains avec finition élégante et hydratation intense.</p>
+<div class="price">
+À partir de 40€
 </div>
 
 </div>
+
 </section>
 
-<!-- GALLERY -->
 <section id="gallery" class="reveal">
-<div class="title"><h2>Galerie</h2></div>
+
+<div class="title">
+<h2>Galerie</h2>
+<p>CRÉATIONS SIGNATURE</p>
+</div>
 
 <div class="gallery">
-<div class="gallery-item"><img src="https://i.postimg.cc/bvsmbG46/629979650-17999852282902754-7582938986735751047-n.jpg"></div>
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200"></div>
-<div class="gallery-item"><img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=1200"></div>
+
+<div class="gallery-item">
+<img src="https://i.postimg.cc/bvsmbG46/629979650-17999852282902754-7582938986735751047-n.jpg">
 </div>
+
+<div class="gallery-item">
+<img src="https://i.postimg.cc/28QqFvMS/Pose-de-semi-permanent-avec-paillettes-rose-semipermanent-blanc-rose-paillettes-prothe-(1).webp">
+</div>
+
+<div class="gallery-item">
+<img src="https://i.postimg.cc/8PWYZnkv/Pose-de-Noel-Gainage-sur-ongles-naturels-effet-pull-et-flocons-effetpull-nailsfl.webp">
+</div>
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1619451334792-150fd785ee74?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200&auto=format&fit=crop">
+</div>
+
+</div>
+
 </section>
 
-<!-- BOOKING -->
-<section id="booking" class="reveal">
-<div class="booking">
+<section id="contact" class="reveal">
 
-<h2>Réservation</h2>
+<div class="contact">
 
-<input placeholder="Nom">
-<input placeholder="Email">
-<textarea placeholder="Message"></textarea>
+<h2>Réserver</h2>
 
-<a class="btn primary">Envoyer</a>
+<p>Saint-Céré • 25 rue Pasteur</p>
+<p>06 88 10 37 83</p>
+<p>contact@rosepaillettes.fr</p>
+
+<form class="booking">
+
+<input type="text" placeholder="Votre nom">
+
+<input type="email" placeholder="Votre email">
+
+<textarea placeholder="Votre demande"></textarea>
+
+<button class="btn btn-primary">
+Envoyer
+</button>
+
+</form>
 
 </div>
-</section>
 
+</section>
+<section class="socials reveal">
+
+<div class="title">
+<h2>Réseaux</h2>
+<p>SUIVEZ NOS CRÉATIONS</p>
+</div>
+
+<div class="social-buttons">
+
+<a 
+href="https://www.instagram.com/rose_et_paillettes46/" 
+target="_blank"
+class="social-btn instagram"
+>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
+<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.087 3.269.222 2.76.42a5.9 5.9 0 0 0-2.14 1.4A5.9 5.9 0 0 0 .42 3.96C.222 4.47.087 5.05.048 5.903.01 6.756 0 7.029 0 9.2s.01 2.444.048 3.297c.039.853.174 1.434.372 1.943a5.9 5.9 0 0 0 1.4 2.14 5.9 5.9 0 0 0 2.14 1.4c.509.198 1.09.333 1.943.372C5.556 15.99 5.829 16 8 16s2.444-.01 3.297-.048c.853-.039 1.434-.174 1.943-.372a5.9 5.9 0 0 0 2.14-1.4 5.9 5.9 0 0 0 1.4-2.14c.198-.509.333-1.09.372-1.943C15.99 11.644 16 11.371 16 9.2s-.01-2.444-.048-3.297c-.039-.853-.174-1.434-.372-1.943a5.9 5.9 0 0 0-1.4-2.14 5.9 5.9 0 0 0-2.14-1.4c-.509-.198-1.09-.333-1.943-.372C10.444.01 10.171 0 8 0zm0 1.441c2.134 0 2.389.008 3.234.046.78.036 1.204.166 1.485.276.372.145.637.318.916.597.279.279.452.544.597.916.11.281.24.705.276 1.485.038.845.046 1.1.046 3.234s-.008 2.389-.046 3.234c-.036.78-.166 1.204-.276 1.485a4.43 4.43 0 0 1-.597.916 4.43 4.43 0 0 1-.916.597c-.281.11-.705.24-1.485.276-.845.038-1.1.046-3.234.046s-2.389-.008-3.234-.046c-.78-.036-1.204-.166-1.485-.276a4.43 4.43 0 0 1-.916-.597 4.43 4.43 0 0 1-.597-.916c-.11-.281-.24-.705-.276-1.485C1.449 10.589 1.441 10.334 1.441 8s.008-2.389.046-3.234c.036-.78.166-1.204.276-1.485.145-.372.318-.637.597-.916.279-.279.544-.452.916-.597.281-.11.705-.24 1.485-.276C5.611 1.449 5.866 1.441 8 1.441zm0 2.455A4.104 4.104 0 1 0 8 12.104 4.104 4.104 0 0 0 8 3.896zm0 6.766A2.662 2.662 0 1 1 8 5.338a2.662 2.662 0 0 1 0 5.324zm4.27-7.845a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92z"/>
+</svg>
+
+<span>Instagram</span>
+
+</a>
+
+<a 
+href="https://www.facebook.com/p/Amandine-Dufour-100089849717942/" 
+target="_blank"
+class="social-btn facebook"
+>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+<path d="M16 8.049C16 3.603 12.418 0 8 0S0 3.603 0 8.049c0 4.017 2.926 7.347 6.75 7.951v-5.625H4.719V8.049H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.994 0-1.304.621-1.304 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+</svg>
+
+<span>Facebook</span>
+
+</a>
+
+</div>
+
+</section>
+  <section class="infos reveal">
+
+<div class="title">
+<h2>Nous Trouver</h2>
+<p>CONTACT • LOCALISATION • AVIS CLIENTES</p>
+</div>
+
+<div class="infos-grid">
+
+<!-- WHATSAPP -->
+
+<div class="info-card">
+
+<h3>Contact WhatsApp</h3>
+
+<p>
+Échange rapide pour vos rendez-vous, questions ou demandes personnalisées.
+</p>
+
+<a 
+href="https://wa.me/33688103783" 
+target="_blank"
+class="whatsapp-btn"
+>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+<path d="M13.601 2.326A7.854 7.854 0 0 0 8.021 0C3.61 0 .03 3.58.03 7.99c0 1.407.367 2.78 1.064 3.99L0 16l4.14-1.086a7.96 7.96 0 0 0 3.88 1.003h.003c4.41 0 7.99-3.58 7.99-7.99a7.94 7.94 0 0 0-2.412-5.601zM8.024 14.56a6.6 6.6 0 0 1-3.36-.92l-.24-.143-2.46.646.657-2.4-.156-.247a6.58 6.58 0 0 1-1.013-3.505c.002-3.65 2.973-6.62 6.626-6.62a6.58 6.58 0 0 1 4.69 1.945 6.58 6.58 0 0 1 1.935 4.687c-.002 3.653-2.973 6.623-6.68 6.623zm3.636-4.93c-.2-.1-1.183-.584-1.367-.65-.183-.067-.317-.1-.45.1-.133.2-.516.65-.633.783-.117.133-.233.15-.433.05-.2-.1-.844-.31-1.607-.99-.594-.53-.995-1.184-1.112-1.384-.117-.2-.013-.308.087-.408.09-.089.2-.233.3-.35.1-.116.133-.2.2-.333.067-.133.033-.25-.017-.35-.05-.1-.45-1.083-.617-1.483-.162-.39-.327-.337-.45-.343l-.383-.007c-.133 0-.35.05-.533.25-.183.2-.7.683-.7 1.667s.717 1.933.817 2.067c.1.133 1.41 2.153 3.417 3.018.477.206.85.33 1.14.423.479.152.915.13 1.26.079.384-.057 1.183-.483 1.35-.95.167-.466.167-.866.117-.95-.05-.083-.183-.133-.383-.233z"/>
+</svg>
+
+<span>Discuter sur WhatsApp</span>
+
+</a>
+
+</div>
+
+<!-- GOOGLE MAP -->
+
+<div class="info-card map-card">
+
+<h3>Notre Institut</h3>
+
+<p>25 rue Pasteur • Saint-Céré</p>
+
+<div class="map-container">
+
+<iframe
+src="https://www.google.com/maps?q=25+rue+Pasteur+Saint-Céré&output=embed"
+allowfullscreen=""
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- AVIS -->
+
+<div class="reviews">
+
+<div class="review-card">
+<div class="stars">★★★★★</div>
+
+<p>
+“Je recommande vivement ! Amandine est très gentille et très professionnelle.”
+</p>
+
+<h4>Flavie Lacan</h4>
+</div>
+
+<div class="review-card">
+<div class="stars">★★★★★</div>
+
+<p>
+“Très contente de la prestation, moment très agréable avec Amandine qui est adorable et très compétente. Moment détente garantie ! Je recommande a 100%”
+</p>
+
+<h4>Rose Martins</h4>
+</div>
+
+<div class="review-card">
+<div class="stars">★★★★★</div>
+
+<p>
+“Un immense merci à Amandine 💅✨ Pose de vernis semi-permanent impeccable, travail soigné et tenue parfaite. Moment très agréable, je recommande à 100 % !”
+</p>
+
+<h4>S L</h4>
+</div>
+
+</div>
+
+</section>
 <footer>
-© 2026 Rose & Paillettes — Luxury Nails Studio
+© 2026 Rose & Paillettes by Amandine
 </footer>
 
 <script>
 
-/* REVEAL SCROLL */
-const items=document.querySelectorAll('.reveal');
+/* SCROLL REVEAL */
 
-window.addEventListener('scroll',()=>{
-items.forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight - 80){
-el.classList.add('active');
+const reveals = document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll', () => {
+
+reveals.forEach(reveal => {
+
+const top = reveal.getBoundingClientRect().top;
+
+if(top < window.innerHeight - 100){
+reveal.classList.add('active');
 }
+
 });
+
+});
+
+/* 3D CARDS */
+
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+
+card.addEventListener('mousemove', e => {
+
+const rect = card.getBoundingClientRect();
+
+const x = e.clientX - rect.left;
+const y = e.clientY - rect.top;
+
+const rotateY = ((x / rect.width) - 0.5) * 18;
+const rotateX = ((y / rect.height) - 0.5) * -18;
+
+card.style.transform = `
+rotateY(${rotateY}deg)
+rotateX(${rotateX}deg)
+translateY(-10px)
+`;
+
+});
+
+card.addEventListener('mouseleave', () => {
+
+card.style.transform = `
+rotateY(0deg)
+rotateX(0deg)
+translateY(0px)
+`;
+
+});
+
 });
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
 
+<script>
+
+const lenis = new Lenis({
+duration:1.2,
+smoothWheel:true
+});
+
+function raf(time){
+lenis.raf(time);
+requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+</script>
 </body>
 </html>
