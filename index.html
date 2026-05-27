@@ -1255,15 +1255,16 @@ Voir les créations
 <p>06 88 10 37 83</p>
 <p>contact@rosepaillettes.fr</p>
 
-<form class="booking">
 
-<input type="text" placeholder="Votre nom">
+<form action="https://formspree.io/f/xabcd123" method="POST" class="booking">
 
-<input type="email" placeholder="Votre email">
+<input type="text" name="nom" placeholder="Votre nom" required>
 
-<textarea placeholder="Votre demande"></textarea>
+<input type="email" name="email" placeholder="Votre email" required>
 
-<button class="btn btn-primary">
+<textarea name="message" placeholder="Votre demande" required></textarea>
+
+<button type="submit" class="btn btn-primary">
 Envoyer
 </button>
 
